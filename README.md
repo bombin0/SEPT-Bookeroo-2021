@@ -3,10 +3,11 @@
 # Group Day-Time
 
 ## Members
-* xxxxx
-* xxxxx
-* xxxxx
-* xxxxx
+* Zara Noor
+* Arjun Sharma
+* Sneha Debsikdar
+* Patrick Phillips
+* Vincent Tang
 
 ## Records
 
