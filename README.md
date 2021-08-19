@@ -1,6 +1,6 @@
 # RMIT SEPT 2021 Major Project
 
-# Group Day-Time
+# Group 4
 
 ## Members
 * Zara Noor
