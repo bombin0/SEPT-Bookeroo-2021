@@ -3,11 +3,10 @@ import React, { Component } from 'react'
  class Header extends Component {
     render() {
         return (
-            <div>
-            <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
             <div className="container">
-                <a className="navbar-brand" href="Dashboard.html">
-                    Person Management Tool
+                <a className="navbar-brand" href="/dashboard">
+                    BOOKEROO
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                     <span className="navbar-toggler-icon" />
@@ -21,7 +20,6 @@ import React, { Component } from 'react'
                             </a>
                         </li>
                     </ul>
-    
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <a className="nav-link " href="register.html">
@@ -33,11 +31,10 @@ import React, { Component } from 'react'
                                 Login
                             </a>
                         </li>
-                    </ul>
+                    </ul>         
                 </div>
             </div>
         </nav>
-            </div>
         )
     }
 }
