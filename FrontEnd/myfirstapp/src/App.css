@@ -63,3 +63,12 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.login {
+  margin-top: 5%;
+  margin-Left: 30%;
+  width: 40%;
+  background-Color: rgba(0, 128, 0, 0.025);
+  box-Shadow: 0 0 15px rgb(50, 50, 50);
+  border-Radius:5%;
+}
