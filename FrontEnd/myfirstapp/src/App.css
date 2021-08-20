@@ -2,9 +2,39 @@ img {
   width: 100%;
 }
 
-.navbar {
-  background-color: #e3f2fd;
+.button{
+  margin-top: 30px;
+  margin-right:60px;
+  width: 100px;
+  height: 40px;
+  border: solid;
+  display:inline-block;
+  text-align:center;
 }
+
+.header-container {
+ margin-left:0;
+}
+
+.navbar {
+  background-color: #e3f2fd; 
+}
+
+.child{
+  width:450px;
+  margin:20px 20px;
+}
+
+
+.flex-container{
+  display:flex;
+  margin:20px 100px;
+}
+
+.navbar-brand{
+  float:left;
+}
+
 .fa.fa-edit {
   color: #18a2b9;
 }

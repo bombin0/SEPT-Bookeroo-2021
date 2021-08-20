@@ -8,7 +8,7 @@ import AddPerson from "./components/Persons/AddPerson";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import Landing from "./components/Layout/Landing";
+import Welcome from "./components/Layout/Welcome";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
 
@@ -23,7 +23,7 @@ class App extends Component {
               //Public Routes
             }
            
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" component={Welcome} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
 
