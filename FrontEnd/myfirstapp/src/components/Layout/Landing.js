@@ -16,7 +16,7 @@ class Landing extends Component {
                   Create your account to join 
                 </p>
                 <hr />
-                <Link className="btn btn-lg btn-primary mr-2" to="/register">
+                <Link className="btn btn-lg btn-primary mr-2" to="/preregister">
                   Sign Up
                 </Link>
                 <Link className="btn btn-lg btn-secondary mr-2" to="/login">

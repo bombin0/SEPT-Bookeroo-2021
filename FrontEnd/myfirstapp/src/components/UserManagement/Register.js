@@ -78,6 +78,21 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                   <input
+                    type="text"
+                    className= {classnames("form-control form-control-lg", {
+                        "is-invalid": errors.name
+                    }) }
+                    placeholder="Username"
+                    uname="uname"
+                    value= {this.state.name}
+                    required
+                  />
+                  {errors.name && (
+                      <div className= "invalid-feedback">{errors.name}</div>
+                  )}
+                </div>
+                <div className="form-group">
+                  <input
                     type="password"
                     className="form-control form-control-lg"
                     placeholder="Password"
@@ -92,7 +107,7 @@ class Register extends Component {
                     name="password2"
                   />
                 </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input type="submit" className="btn btn-info btn-block mt-4" style={{backgroundColor:"rgb(241, 179, 8)",border:"yellow"}}/>
               </form>
             </div>
           </div>
