@@ -3,7 +3,7 @@ img {
 }
 
 .button{
-  margin-top: 30px;
+  margin-top: 170px;
   margin-right:60px;
   width: 100px;
   height: 40px;
@@ -12,23 +12,33 @@ img {
   text-align:center;
 }
 
+
+
 .header-container {
  margin-left:0;
+ 
 }
 
+.subtext {
+  
+}
 .navbar {
   background-color: #e3f2fd; 
 }
 
+
 .child{
-  width:450px;
+  width:525px;
   margin:20px 20px;
+ 
 }
 
 
 .flex-container{
   display:flex;
   margin:20px 100px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .navbar-brand{
