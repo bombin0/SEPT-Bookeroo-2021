@@ -1,10 +1,115 @@
-img {
-  width: 100%;
+a:link {
+  color: #0000EE;
+}
+
+a:visited {
+  color: #551A8B;
+}
+
+
+a:hover {
+  color: hotpink;
+}
+
+
+a:active {
+  color: blue;
+}
+
+
+.img{
+  width:75px;
+  height:auto;
+}
+
+
+#read-more-link{
+  margin-top: 100px;
+  font-size: 175%;
+  display:inline-block;
+}
+
+.button{
+  margin-top:35px;
+  margin-right:60px;
+  width: 220px;
+  height: 50px;
+  border: solid;
+  display:inline-block;
+  text-align:center;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+#welcome{
+  font-size: 430%;
+}
+
+
+#subtext {
+  margin-top:25px;
+  font-size:250%;
+}
+
+#browse {
+  margin-top:18px;
+  
+  font-size: 275%;
+
+}
+
+#browse-text{
+  margin-top:40px;
+  font-size: 175%;
+
+}
+
+#enquiries{
+  font-size:170%;
+  text-align:center;
 }
 
 .navbar {
-  background-color: #e3f2fd;
+  background-color: #494b4d; 
 }
+
+
+.child{
+  width:700px;
+  margin:20px 20px;
+ 
+}
+
+.contact-us-child{
+  width:525px;
+  margin:100px 20px;
+  text-align:center;
+
+}
+
+.info-child{
+  margin:10px 240px;
+  text-align:center;
+  width:350px;
+}
+
+.info-child body{
+  font-size:150%;
+  text-align:center;
+}
+
+.flex-container{
+  display:flex;
+  margin:20px 100px;
+  align-items: flex-start;
+  justify-content: center;
+  
+}
+
+.navbar-brand{
+  float:left;
+}
+
 .fa.fa-edit {
   color: #18a2b9;
 }
