@@ -12,10 +12,10 @@ import React, { Component } from 'react'
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                     <span className="navbar-toggler-icon" />
                 </button>
-    
+                
             </div>
         </nav>
-            </div>
+        </div>
         )
     }
 }

@@ -11,6 +11,7 @@ import store from "./store";
 import Welcome from "./components/Layout/Welcome";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
+import PreRegister from "./components/UserManagement/PreRegister";
 
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
             }
            
             <Route exact path="/" component={Welcome} />
+            <Route exact path="/preregister" component={PreRegister} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
 

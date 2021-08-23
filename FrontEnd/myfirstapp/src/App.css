@@ -168,3 +168,26 @@ a:active {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.login {
+  margin-top: 5%;
+  margin-Left: 30%;
+  width: 40%;
+  background-Color: rgba(0, 128, 0, 0.025);
+  box-Shadow: 0 0 15px rgb(50, 50, 50);
+  border-Radius:5%;
+}
+
+.button {
+  padding: 20px;
+  width: 70%;
+  background-color: rgb(241, 179, 8);
+  box-Shadow: 0 0 15px rgb(50, 50, 50);
+  margin-Left: 15%;
+}
+
+.button:hover{
+  cursor: -webkit-grab;
+  background-color: grey;
+}
+
