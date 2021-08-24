@@ -12,6 +12,7 @@ import Landing from "./components/Layout/Landing";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
 import PreRegister from "./components/UserManagement/PreRegister";
+import Register_2 from "./components/UserManagement/Register_2";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/preregister" component={PreRegister} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/register2" component={Register_2} />
             <Route exact path="/login" component={Login} />
 
             {

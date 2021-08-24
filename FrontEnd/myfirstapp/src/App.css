@@ -73,16 +73,20 @@ img {
   border-Radius:5%;
 }
 
-.button {
-  padding: 20px;
+.box {
+  padding: 5%;
   width: 70%;
-  background-color: rgb(241, 179, 8);
+  background-color: gainsboro;
   box-Shadow: 0 0 15px rgb(50, 50, 50);
   margin-Left: 15%;
 }
 
-.button:hover{
+.box:hover{
   cursor: -webkit-grab;
   background-color: grey;
 }
 
+form{
+  padding: 20px;
+  background: gainsboro;
+}
