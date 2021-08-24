@@ -29,7 +29,7 @@ a:active {
   display:inline-block;
 }
 
-.button{
+.buttonM{
   margin-top:35px;
   margin-right:60px;
   width: 220px;
@@ -53,9 +53,7 @@ a:active {
 
 #browse {
   margin-top:18px;
-  
   font-size: 275%;
-
 }
 
 #browse-text{
@@ -65,14 +63,18 @@ a:active {
 }
 
 #enquiries{
-  font-size:170%;
+  font-size:130%;
   text-align:center;
+  font-weight: bolder;
 }
 
 .navbar {
   background-color: #494b4d; 
 }
 
+.navbar-brand{
+  margin-left: 250%;
+}
 
 .child{
   width:700px;
@@ -88,26 +90,21 @@ a:active {
 }
 
 .info-child{
-  margin:10px 240px;
+  margin:2%;
   text-align:center;
-  width:350px;
+  width:20%;
 }
 
 .info-child body{
-  font-size:150%;
+  font-size:100%;
   text-align:center;
+  font-weight: bold;
 }
 
 .flex-container{
   display:flex;
-  margin:20px 100px;
   align-items: flex-start;
   justify-content: center;
-  
-}
-
-.navbar-brand{
-  float:left;
 }
 
 .fa.fa-edit {

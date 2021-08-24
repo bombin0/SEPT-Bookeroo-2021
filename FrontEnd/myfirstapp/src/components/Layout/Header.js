@@ -4,9 +4,9 @@ import React, { Component } from 'react'
     render() {
         return (
             <div>
-            <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
             <div className="header-container">
-                <a className="navbar-brand" href="Dashboard.html">
+                <a className="navbar-brand" href="/">
                     BOOKEROO
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
