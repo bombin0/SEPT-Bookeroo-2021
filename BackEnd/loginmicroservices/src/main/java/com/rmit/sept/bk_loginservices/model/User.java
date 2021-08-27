@@ -29,6 +29,8 @@ public class User implements UserDetails {
     private String confirmPassword;
     private Date create_At;
     private Date update_At;
+    private String userType;
+    private String status;
 
     //OneToMany with Project
 
@@ -99,6 +101,26 @@ public class User implements UserDetails {
     @PreUpdate
     protected void onUpdate(){
         this.update_At = new Date();
+    }
+
+    public void setUserType(String userType){
+        this.userType = userType;
+
+    }
+
+    public String getUserType(){
+        return this.userType;
+
+    }
+
+    public String getStatus(){
+        return this.status;
+
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+
     }
 
     /*

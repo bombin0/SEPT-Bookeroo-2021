@@ -13,6 +13,8 @@ class Register extends Component {
       fullName: "",
       password: "",
       confirmPassword: "",
+      userType: "customer",
+      status: "active",
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
@@ -25,10 +27,13 @@ class Register extends Component {
       username: this.state.username,
       fullName: this.state.fullName,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword
+      confirmPassword: this.state.confirmPassword,
+      userType: this.state.userType,
+      status: this.state.status
     };
 
-    this.props.createNewUser(newUser, this.props.history);
+      this.props.createNewUser(newUser, this.props.history);
+    
   }
 
   onChange(e) {
@@ -36,7 +41,7 @@ class Register extends Component {
   }
 
   render() {
-      const { errors } = this.state;
+    const { errors } = this.state;
     return (
       <div className="register">
         <div className="container">
@@ -44,12 +49,12 @@ class Register extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create your Account</p>
-              <form action={this.props.action} method={this.props.method} onSubmit={this.onSubmit}>
+              <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
                     className= {classnames("form-control form-control-lg", {
-                        "is-invalid": errors.name
+                        "is-invalid": errors.fullName
                     }) }
                     placeholder="Name"
                     name="fullName"
@@ -57,8 +62,8 @@ class Register extends Component {
                     onChange = {this.onChange}
                     required
                   />
-                  {errors.name && (
-                      <div className= "invalid-feedback">{errors.name}</div>
+                  {errors.fullName && (
+                      <div className= "invalid-feedback">{errors.fullName}</div>
                   )}
                 </div>
                 <div className="form-group">
@@ -74,7 +79,7 @@ class Register extends Component {
                   <input
                     type="text"
                     className= {classnames("form-control form-control-lg", {
-                        "is-invalid": errors.name
+                        "is-invalid": errors.username
                     }) }
                     placeholder="Username"
                     name="username"
@@ -82,8 +87,8 @@ class Register extends Component {
                     onChange = {this.onChange}
                     required
                   />
-                  {errors.name && (
-                      <div className= "invalid-feedback">{errors.name}</div>
+                  {errors.username && (
+                      <div className= "invalid-feedback">{errors.username}</div>
                   )}
                 </div>
                 <div className="form-group">

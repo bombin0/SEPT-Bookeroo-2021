@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import javax.validation.Valid;
 
 import static com.rmit.sept.bk_loginservices.security.SecurityConstant.TOKEN_PREFIX;
@@ -48,10 +49,11 @@ public class UserController {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if(errorMap != null)return errorMap;
-
+       
         User newUser = userService.saveUser(user);
-
+        
         return  new ResponseEntity<User>(newUser, HttpStatus.CREATED);
+        
     }
 
 
