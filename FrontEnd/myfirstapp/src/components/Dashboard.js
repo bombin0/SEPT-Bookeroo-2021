@@ -9,6 +9,7 @@ class Dashboard extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
+                    <a href="/adminManageUsers"> ADMIN MANAGE USERS </a>
                         <h1 className="display-4 text-center">Persons</h1>
                         <br />
                        <CreatePersonButton />
