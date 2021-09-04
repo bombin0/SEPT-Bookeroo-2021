@@ -94,7 +94,7 @@ class Login extends Component {
             <br></br>
           </form>
           <center>
-            <a href="/register" style={{ color: "black", fontFamily: "Arial" }}> New to BOOKEROO? Click here to register.</a>
+            <a href="/preregister" style={{ color: "black", fontFamily: "Arial" }}> New to BOOKEROO? Click here to register.</a>
             <br></br><br></br>
             <i class="fas fa-arrow-left"> <a href="/" style={{ color: "black", fontFamily: "Arial" }}>Back to homepage</a></i>
           </center>

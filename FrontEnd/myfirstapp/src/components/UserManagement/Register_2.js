@@ -13,7 +13,13 @@ class Register_2 extends Component {
       fullName: "",
       password: "",
       confirmPassword: "",
-      errors: {}
+      userType: "shopOwner",
+      status: "pending",
+      abn: "",
+      phone: "",
+      address: "",
+      errors: {},
+      optional: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -34,7 +40,13 @@ class Register_2 extends Component {
       username: this.state.username,
       fullName: this.state.fullName,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword
+      confirmPassword: this.state.confirmPassword,
+      userType: this.state.userType,
+      status: this.state.status,
+      abn: this.state.abn,
+      phone: this.state.phone,
+      address: this.state.address,
+      optional: this.state.optional
     };
 
     this.props.createNewUser(newUser, this.props.history);
@@ -43,102 +55,120 @@ class Register_2 extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
     }
-  render() {
+    render() {
       const { errors } = this.state;
-    return (
-      <div className="register2">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">Create your Account</p>
-              <form action="create-profile.html">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className= {classnames("form-control form-control-lg", {
-                        "is-invalid": errors.name
-                    }) }
-                    placeholder="Name"
-                    name="name"
-                    value= {this.state.name}
-                    required
-                  />
-                  {errors.name && (
-                      <div className= "invalid-feedback">{errors.name}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    className="form-control form-control-lg"
-                    placeholder="Email Address"
-                    name="email"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    placeholder="Address"
-                    name="address"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    placeholder="ABN"
-                    name="abn"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="tel"
-                    className="form-control form-control-lg"
-                    placeholder="Contact"
-                    name="contact"
-                    pattern="[0][0-9]-([0-9]{3})|([0-9]{4})-([0-9]{3})|([0-9]{4})"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className= {classnames("form-control form-control-lg", {
-                        "is-invalid": errors.name
-                    }) }
-                    placeholder="Username"
-                    uname="uname"
-                    value= {this.state.name}
-                    required
-                  />
-                  {errors.name && (
-                      <div className= "invalid-feedback">{errors.name}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    placeholder="Password"
-                    name="password"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    placeholder="Confirm Password"
-                    name="password2"
-                  />
-                </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" style={{backgroundColor:"rgb(241, 179, 8)",border:"yellow"}}/>
-              </form>
+      return (
+        <div className="register">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8 m-auto">
+                <h1 className="display-4 text-center">Sign Up</h1>
+                <p className="lead text-center">Create your Account</p>
+                <form onSubmit={this.onSubmit}>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className= {classnames("form-control form-control-lg", {
+                          "is-invalid": errors.fullName
+                      }) }
+                      placeholder="Name"
+                      name="fullName"
+                      value= {this.state.fullName}
+                      onChange = {this.onChange}
+                      required
+                    />
+                    {errors.fullName && (
+                        <div className= "invalid-feedback">{errors.fullName}</div>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className= {classnames("form-control form-control-lg", {
+                          "is-invalid": errors.username
+                      }) }
+                      placeholder="Username"
+                      name="username"
+                      value= {this.state.username}
+                      onChange = {this.onChange}
+                      required
+                    />
+                    {errors.username && (
+                        <div className= "invalid-feedback">{errors.username}</div>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control form-control-lg"
+                      placeholder="Address"
+                      name="address"
+                      value= {this.state.address}
+                      onChange = {this.onChange}
+                      required
+                    /> 
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control form-control-lg"
+                      placeholder="ABN"
+                      name="abn"
+                      value= {this.state.abn}
+                      onChange = {this.onChange}
+                      required
+                    /> 
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="tel"
+                      className="form-control form-control-lg"
+                      placeholder="Phone"
+                      name="phone"
+                      value= {this.state.phone}
+                      onChange = {this.onChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      className="form-control form-control-lg"
+                      placeholder="Password"
+                      name="password"
+                      value= {this.state.password}
+                      onChange = {this.onChange}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      className="form-control form-control-lg"
+                      placeholder="Confirm Password"
+                      name="confirmPassword"
+                      value= {this.state.confirmPassword}
+                      onChange = {this.onChange}
+                      required
+                    />
+                  </div>
+                  <input type="submit" className="btn btn-info btn-block mt-4" style={{backgroundColor:"rgb(241, 179, 8)",border:"yellow"}}/>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
-}
-export default Register_2;
+
+Register_2.propTypes = {
+  createNewUser: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { createNewUser })(Register_2);
