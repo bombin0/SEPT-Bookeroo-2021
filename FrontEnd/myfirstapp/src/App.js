@@ -13,7 +13,7 @@ import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
 import PreRegister from "./components/UserManagement/PreRegister";
 import Register_2 from "./components/UserManagement/Register_2";
-import ManageUsers from "./components/ManageUsers";
+import ManageUsers from "./components/Admin/ManageUsers";
 
 import jwt_decode from "jwt-decode";
 import setJWTToken from "./securityUtils/setJWTToken";

@@ -15,7 +15,7 @@ class Register extends Component {
       confirmPassword: "",
       userType: "customer",
       status: "active",
-      abn: "NONE",
+      abn: "",
       phone: "",
       address: "",
       optional: "",
