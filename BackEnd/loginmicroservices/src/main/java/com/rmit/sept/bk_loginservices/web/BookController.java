@@ -31,7 +31,7 @@ public class BookController {
 
     @GetMapping("/searchbook")
     public List<Book> searchBook(@RequestBody String search){
-        return bookService.bookSearch(search);
+       return bookService.bookSearch(search);
     }
 
     @GetMapping("/topRatingBooks")

@@ -26,7 +26,7 @@ public class BookService {
     }
 
     public List<Book> bookSearch (String search){
-        return bookRepository.findByISBNOrTitleOrAuthorIgnoreCaseContaining(search);
+        return bookRepository.findByISBNOrTitleOrAuthorIgnoreCaseContaining(search, search, search);
     }
 
     public List<Book> topRatingBooks (){
