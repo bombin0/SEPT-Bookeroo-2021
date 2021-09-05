@@ -4,6 +4,7 @@ import com.rmit.sept.bk_loginservices.model.Book;
 import com.rmit.sept.bk_loginservices.Repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class BookService {
@@ -22,5 +23,17 @@ public class BookService {
 
             return bookRepository.save(newBook);
 
+    }
+
+    public List<Book> bookSearch (String search){
+        return bookRepository.findByISBNOrTitleOrAuthorIgnoreCaseContaining(search);
+    }
+
+    public List<Book> topRatingBooks (){
+        return bookRepository.findByRating(5);
+    }
+
+    public List<Book> bestPriceBooks (){
+        return bookRepository.findByPriceLessThanEqual(30);
     }
 }
