@@ -17,6 +17,7 @@ public class Book {
     private int rating;
     private Blob coverArt;
     private String contents;
+    private String ISBN;
 
     private Date create_At;
     private Date update_At;
@@ -26,7 +27,7 @@ public class Book {
 
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(long id) {
@@ -34,7 +35,7 @@ public class Book {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -42,7 +43,7 @@ public class Book {
     }
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
     public void setAuthor(String author) {
@@ -50,7 +51,7 @@ public class Book {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -58,7 +59,7 @@ public class Book {
     }
 
     public float getPrice() {
-        return price;
+        return this.price;
     }
 
     public void setPrice(float price) {
@@ -66,7 +67,7 @@ public class Book {
     }
 
     public int getRating() {
-        return rating;
+        return this.rating;
     }
 
     public void setRating(int rating) {
@@ -74,7 +75,7 @@ public class Book {
     }
 
     public Blob getCoverArt() {
-        return coverArt;
+        return this.coverArt;
     }
 
     public void setCoverArt(Blob coverArt) {
@@ -82,15 +83,21 @@ public class Book {
     }
 
     public String getContents() {
-        return contents;
+        return this.contents;
     }
 
     public void setContents(String contents) {
         this.contents = contents;
     }
 
-    
+    public String getISBN() {
+        return this.ISBN;
+    }
 
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+    
     public Date getCreate_At() {
         return create_At;
     }
