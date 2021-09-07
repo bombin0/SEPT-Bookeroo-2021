@@ -56,7 +56,7 @@ class Welcome extends Component {
             <h2 id="browse">Browse Book Library</h2>
             <body id="browse-text">Browse BOOKEROO's wide selection of books ranging from latest release books, bestselling authors, timeless classics, and many more!  </body>
 
-            <a id="read-more-link" href="#"><u>Learn more → </u></a>
+            <a id="read-more-link" href="/browse"><u>Learn more → </u></a>
             <div>
 
             </div>
