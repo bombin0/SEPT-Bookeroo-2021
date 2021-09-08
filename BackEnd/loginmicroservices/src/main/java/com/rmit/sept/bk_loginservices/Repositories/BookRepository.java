@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface BookRepository extends CrudRepository<Book, Long>{
     @Override
+
     Iterable<Book> findAllById(Iterable<Long> iterable);
     List<Book> findByISBNOrTitleOrAuthorIgnoreCaseContaining(String ISBN, String title, String Author);
     List<Book> findByRating(int rating);
