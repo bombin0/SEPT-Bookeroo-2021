@@ -6,7 +6,7 @@ import {link, Link} from "react-router-dom";
         <React.Fragment>
         <Link to="/addPerson"
         className="btn btn-lg btn-info">
-        Create a Person
+        Create a Listing
         </Link>
         </React.Fragment>
     )
