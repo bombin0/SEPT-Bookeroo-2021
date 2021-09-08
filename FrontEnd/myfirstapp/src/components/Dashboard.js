@@ -9,17 +9,20 @@ class Dashboard extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <h1 className="display-4 text-center">Persons</h1>
+                        <h1 className="display-4 text-center">Personjhdfujdhs</h1>
                         <br />
                        <CreatePersonButton />
                         <br />
                         <hr />
                         <Person/>
+                        <a href="/adminManageUsers"> ADMIN MANAGE USERS </a>
+                       
                     </div>
                 </div>
+                <a href="/adminManageUsers"> BOOK INFO </a>
             </div>
         </div>
-    
+         
         )
     }
 }

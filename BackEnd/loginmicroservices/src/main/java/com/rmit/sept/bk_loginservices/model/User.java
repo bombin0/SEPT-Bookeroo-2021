@@ -31,6 +31,10 @@ public class User implements UserDetails {
     private Date update_At;
     private String userType;
     private String status;
+    private String address;
+    private String phone;
+    private String abn;
+    private String optional;
 
     //OneToMany with Project
 
@@ -122,6 +126,38 @@ public class User implements UserDetails {
         this.status = status;
 
     }
+
+    public void setPhone (String phone){
+        this.phone = phone;
+    }
+
+    public String getPhone (){
+        return this.phone;
+    } 
+
+    public void setAdrress (String address){
+        this.address = address;
+    }
+
+    public String getAddress (){
+        return this.address;
+    } 
+
+    public void setABN (String abn){
+        this.abn = abn;
+    }
+
+    public String getABN (){
+        return this.abn;
+    } 
+
+    public void setOptional (String optional){
+        this.optional = optional;
+    }
+
+    public String getOptional (){
+        return this.optional;
+    } 
 
     /*
     UserDetails interface methods

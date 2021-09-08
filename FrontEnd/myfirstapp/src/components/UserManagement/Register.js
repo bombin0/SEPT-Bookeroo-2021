@@ -15,11 +15,24 @@ class Register extends Component {
       confirmPassword: "",
       userType: "customer",
       status: "active",
+      abn: "",
+      phone: "",
+      address: "",
+      optional: "",
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.errors){
+        this.setState ({
+            errors: nextProps.errors
+        });
+
+    }
+}
 
   onSubmit(e) {
     e.preventDefault();
@@ -29,7 +42,11 @@ class Register extends Component {
       password: this.state.password,
       confirmPassword: this.state.confirmPassword,
       userType: this.state.userType,
-      status: this.state.status
+      status: this.state.status,
+      abn: this.state.abn,
+      phone: this.state.phone,
+      address: this.state.address,
+      optional: this.state.optional
     };
 
       this.props.createNewUser(newUser, this.props.history);
@@ -68,15 +85,6 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                   <input
-                    type="email"
-                    className="form-control form-control-lg"
-                    placeholder="Email Address"
-                    name="email"
-                    onChange = {this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
                     type="text"
                     className= {classnames("form-control form-control-lg", {
                         "is-invalid": errors.username
@@ -93,12 +101,35 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                   <input
+                    type="text"
+                    className="form-control form-control-lg"
+                    placeholder="Address"
+                    name="address"
+                    value= {this.state.address}
+                    onChange = {this.onChange}
+                    required
+                  /> 
+                </div>
+                <div className="form-group">
+                  <input
+                    type="tel"
+                    className="form-control form-control-lg"
+                    placeholder="Phone"
+                    name="phone"
+                    value= {this.state.phone}
+                    onChange = {this.onChange}
+                    required
+                  /> 
+                </div>
+                <div className="form-group">
+                  <input
                     type="password"
                     className="form-control form-control-lg"
                     placeholder="Password"
                     name="password"
                     value= {this.state.password}
                     onChange = {this.onChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -109,6 +140,7 @@ class Register extends Component {
                     name="confirmPassword"
                     value= {this.state.confirmPassword}
                     onChange = {this.onChange}
+                    required
                   />
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" style={{backgroundColor:"rgb(241, 179, 8)",border:"yellow"}}/>
