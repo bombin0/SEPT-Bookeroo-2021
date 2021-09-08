@@ -14,12 +14,14 @@ import Login from "./components/UserManagement/Login";
 import PreRegister from "./components/UserManagement/PreRegister";
 import Register_2 from "./components/UserManagement/Register_2";
 import ManageUsers from "./components/Admin/ManageUsers";
+import ManageBooks from "./components/Admin/ManageBooks";
 
 import jwt_decode from "jwt-decode";
 import setJWTToken from "./securityUtils/setJWTToken";
 import { SET_CURRENT_USER } from "./actions/types";
 import { logout } from "./actions/securityActions";
 import SecuredRoute from "./securityUtils/SecureRoute";
+import AddBook from "./components/Books/AddBook";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -66,6 +68,11 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/adminManageUsers" component={ManageUsers} />
             <Route exact path="/addPerson" component={AddPerson} />
+            <Route exact path="/ManageBooks" component={ManageBooks} />
+            <Route exact path="/addBook" component={AddBook} />
+
+
+
           
           </div>
         </Router>
