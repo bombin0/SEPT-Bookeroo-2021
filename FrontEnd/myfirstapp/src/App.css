@@ -22,6 +22,18 @@ a:active {
   height:auto;
 }
 
+.table{
+  width: auto;
+  float: left;
+}
+
+.th{
+  text-align: left;
+}
+
+.table, th, td{
+  border:1px solid #000;
+}
 
 #read-more-link{
   margin-top: 100px;
@@ -113,6 +125,16 @@ a:active {
   justify-content: center;
 }
 
+.flex-left {
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+.flex-right {
+  width: 50%;
+  justify-content: space-evenly;
+}
+
 .fa.fa-edit {
   color: #18a2b9;
 }
@@ -194,7 +216,7 @@ a:active {
   background-color: grey;
 }
 
-form{
+.form{
   padding: 20px;
   background: gainsboro;
 }

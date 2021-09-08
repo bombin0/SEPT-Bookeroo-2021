@@ -263,7 +263,7 @@ class ManageUsers extends Component {
                         {result}
                     </div> <br></br>
                     <form onSubmit={this.handleAdding} style={{ backgroundColor: "rgba(0, 128, 0, 0.075)" }}>
-                    <h3 style={{color:"grey", textAlign: "center"}}> MANUAL ADD USER </h3> <br></br>
+                    <h3 style={{color:"grey", textAlign: "center"}}> ADD USER MANUALLY </h3> <br></br>
                     <center>
                         <div className="form-group">
                             <input
@@ -314,7 +314,7 @@ class ManageUsers extends Component {
                         <input type="radio" id="shopowner" name="userType" value="shopOwner" onChange={this.handleRadioChange}/>
                         <label htmlFor="css"> &nbsp; <b> SHOP OWNER </b> </label><br></br>
                         {userT}
-                        <input type="submit" className="btn btn-info btn-block mt-4" value="ADD USER" style={{ backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "10%" }} />
+                        <input type="submit" className="btn btn-info btn-block mt-4" value="ADD USER" style={{ backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "15%" }} />
                     </center>
                     </form>
                 </div>

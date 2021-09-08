@@ -16,11 +16,13 @@ class Dashboard extends Component {
                         <hr />
                         <Person/>
                         <a href="/adminManageUsers"> ADMIN MANAGE USERS </a>
+                       
                     </div>
                 </div>
+                <a href="/adminManageUsers"> BOOK INFO </a>
             </div>
         </div>
-    
+         
         )
     }
 }
