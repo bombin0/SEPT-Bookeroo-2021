@@ -57,7 +57,6 @@ class App extends Component {
            
             <Route exact path="/" component={Welcome} />
             <Route exact path="/preregister" component={PreRegister} />
-            <Route exact path="/browse" component={Browse} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/register2" component={Register_2} />
             <Route exact path="/login" component={Login} />
@@ -68,7 +67,7 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/adminManageUsers" component={ManageUsers} />
             <Route exact path="/addPerson" component={AddPerson} />
-          
+            <Route exact path="/browse" component={Browse} />
           </div>
         </Router>
       </Provider>
