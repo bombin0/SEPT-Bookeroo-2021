@@ -60,23 +60,17 @@ a:active {
 .nav-list:first-child{
   margin-left:600px;
 
+.table{
+  width: auto;
+  float: left;
 }
 
-.nav-list:nth-child(3){
-  margin-left:600px;
+.th{
+  text-align: left;
 }
 
-.nav-item{
-  list-style: none;
-  margin-right:5rem;
-  margin-left:5rem;
-  
-}
-
-.nav-item a {
-  text-decoration:none;
-  color:black;
-  
+.table, th, td{
+  border:1px solid #000;
 }
 
 #read-more-link{
@@ -169,6 +163,16 @@ a:active {
   justify-content: center;
 }
 
+.flex-left {
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+.flex-right {
+  width: 50%;
+  justify-content: space-evenly;
+}
+
 .fa.fa-edit {
   color: #18a2b9;
 }
@@ -250,7 +254,7 @@ a:active {
   background-color: grey;
 }
 
-form{
+.form{
   padding: 20px;
   background: gainsboro;
 }

@@ -6,7 +6,7 @@ import {link, Link} from "react-router-dom";
         <React.Fragment>
         <Link to="/adminManageUsers"
         className="btn btn-lg btn-info">
-        Manage Users
+        Create a Listing
         </Link>
         </React.Fragment>
     )
