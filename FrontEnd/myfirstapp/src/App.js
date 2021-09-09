@@ -70,16 +70,12 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/adminManageUsers" component={ManageUsers} />
             <Route exact path="/addPerson" component={AddPerson} />
-<<<<<<< HEAD
             <Route exact path="/ManageBooks" component={ManageBooks} />
             <Route exact path="/addBook" component={AddBook} />
 
 
 
           
-=======
-            <Route exact path="/browse" component={Browse} />
->>>>>>> 621ae060d119c463faf220285d07e0c0e0ee2a68
           </div>
         </Router>
       </Provider>
