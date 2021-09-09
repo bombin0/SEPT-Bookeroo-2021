@@ -61,6 +61,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/register2" component={Register_2} />
             <Route exact path="/login" component={Login} />
+            
 
             {
               //Private Routes

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import searchButton from "../../images/searchbutton.png";
+import Carousel from '../Carousel';
 
  class Browse extends Component {
     render() {
@@ -22,9 +23,12 @@ import searchButton from "../../images/searchbutton.png";
                 
                 </input>
            
-                
+
             </div>
 
+            <div id="container">
+                
+            </div>
 
 
 
