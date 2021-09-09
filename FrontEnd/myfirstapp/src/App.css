@@ -22,6 +22,45 @@ a:active {
   height:auto;
 }
 
+.nav-list{
+  display:flex;
+  width:100%;
+  font-size: 25px;
+  justify-content: center;
+  align-items: flex-start;
+  
+
+}
+
+.search-bar{
+  box-sizing: border-box;
+  margin-top:150px;
+  outline:none;
+  transform: translate(-50%,-50%);
+  background: rgba(0, 0, 0, 0.7);
+  max-width: 800px;
+  width: 100%;
+  padding: 4px;
+  border-radius: 5px;
+  display:flex;
+  justify-content: center;
+}
+
+.search-bar .input{
+  width:100%;
+  padding: 15px 20px;
+  border:none;
+  font-size: 30px;
+  font-weight: bold;
+  
+}
+
+
+
+.nav-list:first-child{
+  margin-left:600px;
+}
+
 .table{
   width: auto;
   float: left;
