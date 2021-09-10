@@ -8,7 +8,7 @@ public interface BookRepository extends CrudRepository<Book, Long>{
     @Override
 
     Iterable<Book> findAllById(Iterable<Long> iterable);
-    List<Book> findByISBNOrTitleOrAuthorIgnoreCaseContaining(String ISBN, String title, String Author);
+    List<Book> findByISBNOrTitleOrAuthorOrCategoryIgnoreCaseContaining(String ISBN, String title, String Author, String Category);
     List<Book> findByRating(int rating);
     List<Book> findByPriceLessThanEqual(int price);
 }

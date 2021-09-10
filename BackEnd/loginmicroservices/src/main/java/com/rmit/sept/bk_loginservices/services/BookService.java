@@ -15,17 +15,18 @@ public class BookService {
 
         newBook.setAuthor(newBook.getAuthor());
         newBook.setTitle(newBook.getTitle());
-        newBook.setContents("");
+        newBook.setCategory(newBook.getCategory());
+        //newBook.setContents(newBook.getContents());
         newBook.setDescription(newBook.getDescription());
         newBook.setPrice(newBook.getPrice());
         newBook.setRating(newBook.getRating());
-        newBook.setCoverArt("");
+        //newBook.setCoverArt(newBook.getCoverArt());
 
         return bookRepository.save(newBook);
     }
     
     public List<Book> bookSearch (String search){
-        return bookRepository.findByISBNOrTitleOrAuthorIgnoreCaseContaining(search, search, search);
+        return bookRepository.findByISBNOrTitleOrAuthorOrCategoryIgnoreCaseContaining(search, search, search, search);
     }
 
     public List<Book> topRatingBooks (){

@@ -15,9 +15,10 @@ public class Book {
     private String description;
     private float price;
     private int rating;
-    private String coverArt;
-    private String contents;
+    private Blob coverArt;
+    private Blob contents;
     private String ISBN;
+    private String category;
 
     private Date create_At;
     private Date update_At;
@@ -74,19 +75,19 @@ public class Book {
         this.rating = rating;
     }
 
-    public String getCoverArt() {
+    public Blob getCoverArt() {
         return this.coverArt;
     }
 
-    public void setCoverArt(String coverArt) {
+    public void setCoverArt(Blob coverArt) {
         this.coverArt = coverArt;
     }
 
-    public String getContents() {
+    public Blob getContents() {
         return this.contents;
     }
 
-    public void setContents(String contents) {
+    public void setContents(Blob contents) {
         this.contents = contents;
     }
 
@@ -117,6 +118,13 @@ public class Book {
         this.update_At = update_At;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCategory() {
+        return this.category;
+    }
 
     @PrePersist
     protected void onCreate(){

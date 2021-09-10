@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 
@@ -30,8 +31,8 @@ public class BookController {
         return new ResponseEntity<Book>(newBook, HttpStatus.CREATED);
     }
 
-    @GetMapping("/searchbook")
-    public List<Book> searchBook(@RequestBody String search){
+    @GetMapping("/searchbook/{search}")
+    public List<Book> searchBook(@PathVariable String search){
        return bookService.bookSearch(search);
     }
 
