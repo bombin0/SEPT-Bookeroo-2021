@@ -2,7 +2,6 @@ package com.rmit.sept.bk_loginservices.web;
 
 import com.rmit.sept.bk_loginservices.services.BookService;
 import com.rmit.sept.bk_loginservices.model.Book;
-import com.rmit.sept.bk_loginservices.Repositories.BookRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/api/book")
+@RequestMapping("/api/books")
 public class BookController {
     
     @Autowired
@@ -25,6 +25,7 @@ public class BookController {
 
     @PostMapping("/save")
     public ResponseEntity<Book> createNewBook(@RequestBody Book book){
+        System.out.println(book.getAuthor());
         Book newBook = bookService.saveBook(book);
         return new ResponseEntity<Book>(newBook, HttpStatus.CREATED);
     }

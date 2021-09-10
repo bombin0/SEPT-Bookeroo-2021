@@ -258,12 +258,13 @@ class ManageUsers extends Component {
                         <input type="text" value={this.state.search} onChange = {this.onChange} placeholder="SEARCH BY USERNAME/EMAIL ADDRESS" name="search" style={{ width: "80%", height: "40px" }} />
                         <button type="submit" style={{ height: "40px", backgroundColor: "rgb(241, 179, 8)", border: "yellow" }}><i class="fa fa-search"></i> SEARCH  </button>
                     </form>
+                    <br/>
                     <div className="results" style={{ backgroundColor: "rgba(0, 128, 0, 0.075)"}}>
                     <br></br><h3 style={{marginLeft: "2%", color:"grey"}}> RESULTS </h3>
                         {result}
                     </div> <br></br>
-                    <form onSubmit={this.handleAdding} style={{ backgroundColor: "rgba(0, 128, 0, 0.075)" }}>
-                    <h3 style={{color:"grey", textAlign: "center"}}> ADD USER MANUALLY </h3> <br></br>
+                    <form onSubmit={this.handleAdding} style={{ backgroundColor: "rgba(0, 128, 0, 0.075)" }}><br></br>
+                    <h3 style={{color:"grey", textAlign: "center"}}> MANUAL ADD USER </h3> <br></br>
                     <center>
                         <div className="form-group">
                             <input

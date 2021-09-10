@@ -12,17 +12,16 @@ public class BookService {
     private BookRepository bookRepository;
 
     public Book saveBook(Book newBook){
-        
-            newBook.setAuthor(newBook.getAuthor());
-            newBook.setTitle(newBook.getTitle());
-            newBook.setContents(newBook.getContents());
-            newBook.setDescription(newBook.getDescription());
-            newBook.setPrice(newBook.getPrice());
-            newBook.setRating(newBook.getRating());
-            newBook.setCoverArt(newBook.getCoverArt());
 
-            return bookRepository.save(newBook);
+        newBook.setAuthor(newBook.getAuthor());
+        newBook.setTitle(newBook.getTitle());
+        newBook.setContents("");
+        newBook.setDescription(newBook.getDescription());
+        newBook.setPrice(newBook.getPrice());
+        newBook.setRating(newBook.getRating());
+        newBook.setCoverArt("");
 
+        return bookRepository.save(newBook);
     }
     
     public List<Book> bookSearch (String search){

@@ -119,10 +119,8 @@ public class UserController {
     }
 
     @PostMapping("/editUser")
-    public void editUser(@Valid @RequestBody User user, BindingResult result){
-        System.out.println("hHEHEHEH");
+    public void editUser(@Valid @RequestBody User user, BindingResult result){  
         System.out.println(user.getFullName());
-        System.out.println("hHEHEHEH");
         userService.editUser(user);
     }
 

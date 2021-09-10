@@ -62,6 +62,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/register2" component={Register_2} />
             <Route exact path="/login" component={Login} />
+            
 
             {
               //Private Routes
@@ -69,9 +70,9 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/adminManageUsers" component={ManageUsers} />
             <Route exact path="/addPerson" component={AddPerson} />
+            <Route exact path="/adminManageBooks" component={ManageBooks} />
             <Route exact path="/addBook" component={AddBook} />
             <Route exact path="/browse" component={Browse} />
-            <Route exact path="/manageBooks" component={ManageBooks} />
           </div>
         </Router>
       </Provider>
