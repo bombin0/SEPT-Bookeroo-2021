@@ -10,7 +10,7 @@ import books3 from "../../images/books3.jpeg";
 class Welcome extends Component {
   render() {
     return (
-      <div className="landing">
+      <div className="landing mt-4">
 
         <div className="hello" style={{float:"left"}}>
           <div className="child">
