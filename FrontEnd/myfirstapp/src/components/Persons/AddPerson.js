@@ -46,11 +46,11 @@ class AddPerson extends Component {
     }
     render() {
         return (
-            <div className="Listing">
+            <div className="Listing mt-4">
             <div className="flex-container">
-                <div className="flex-left">
-                    <div className="col-md-10 m-center">
-                        <h1 className="display-4 text-center">Create New Listing</h1>
+                <div className="flex-left ml-3">
+                    <div className="col-md-10 m-center" style={{backgroundColor:"#bbb"}}>
+                        <h1 className="display-5 ">Create New Listing</h1>
                         <form onSubmit={this.onSubmit}>
 
                             <h6>Title:</h6>
@@ -59,6 +59,7 @@ class AddPerson extends Component {
                                 placeholder="Add Book Title" 
                                 name="title"
                                 value= {this.state.title}
+                                style = {{width:"70%"}}
                                 onChange = {this.onChange}
                                 />
                                 
@@ -69,6 +70,7 @@ class AddPerson extends Component {
                                 placeholder="Add Book Author"
                                 name="author"
                                 value= {this.state.author}
+                                style = {{width:"70%"}}
                                 onChange = {this.onChange}
                                     />
                             </div>
@@ -79,6 +81,7 @@ class AddPerson extends Component {
                                 placeholder="Add Book Genre"
                                 name="genre"
                                 value= {this.state.genre}
+                                style = {{width:"70%"}}
                                 onChange = {this.onChange}
                                     />
                             </div>
@@ -89,6 +92,7 @@ class AddPerson extends Component {
                                 placeholder="Add Book Description"
                                 name = "description"
                                 value= {this.state.description}
+                                style = {{width:"70%"}}
                                 onChange = {this.onChange}
                                 />
                                 
@@ -99,11 +103,13 @@ class AddPerson extends Component {
                                 <input type="price" className="form-control form-control-lg" 
                                 name="price"
                                 value= {this.state.price}
+                                style = {{width:"70%"}}
                                 onChange = {this.onChange}
                                 />
                             </div>
                             
-                            <input type="submit" className="btn btn-primary btn-block mt-4" />
+                            <input type="submit" className="btn btn-primary btn-block mt-4" 
+                              style = {{width:"70%"}}/>
                         </form>
                      </div>   
                 </div>
@@ -148,27 +154,7 @@ class AddPerson extends Component {
             </div>
 
             <div className="contact-space" style={{ backgroundImage: `url(${require("../../images/crumbled.jpg")})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', }}>
-          <div className="flex-container" >
-            <div className="contact-us-child">
-              <h1> See what Books are popular!</h1>
-            </div>
-
-          </div>
-
-          <div className="flex-container" >
-            <div className="info-child">
-              <img className="img" src={top10} style={{width:"200px"}}/>
-              <h1> Top 10 Books</h1>
-            </div>
-            <div className="info-child">
-              <img className="img" src={Releases} style={{width:"200px"}}/>
-              <h1>New Popular Releases</h1>
-            </div>
-            <div className="info-child">
-              <img className="img" src={rated} style={{width:"200px"}}/>
-              <h1> Top Rated</h1>
-            </div>
-          </div>
+          
         </div>
 
         </div>

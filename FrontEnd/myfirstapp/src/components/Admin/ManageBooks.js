@@ -95,7 +95,7 @@ class ManageBooks extends Component {
                             </div>
                             <h6>Price:</h6>
                             <div className="form-group">
-                                <input type="price" className="form-control form-control-lg"
+                                <input type="number" className="form-control form-control-lg"
                                     placeholder="PRICE"
                                     name="price"
                                     value={this.state.price}

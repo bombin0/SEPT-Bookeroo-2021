@@ -38,7 +38,7 @@ class ManageUsers extends Component {
             const requests = res.data;
             this.setState({requests });
           })
-          
+           
       }
 
     handleAdding = event => {
@@ -238,7 +238,7 @@ class ManageUsers extends Component {
                     </table>
         }
         return (
-            <div className="ManageUsers">
+            <div className="ManageUsers mt-4">
                 <div className="leftSide" style={{ marginLeft: "2%", float: "left", width: "30%", backgroundColor: "rgba(0, 128, 0, 0.075)"}}>
                     <br></br>
                     <h3 style={{marginLeft: "2%", color: "grey"}}> PENDING USER REQUESTS</h3> <br></br>
