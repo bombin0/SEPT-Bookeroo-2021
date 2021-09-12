@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {createNewUser} from "../../actions/securityActions";
-import axios from "axios";
+import {getUserRequests, searchUserData, approveUserRequest, rejectUserRequest, blockUserAccount, unblockUserAccount, editUserDetails} from "../../actions/adminActions";
 
 class ManageUsers extends Component {
     constructor() {
@@ -34,11 +34,21 @@ class ManageUsers extends Component {
         this.handleRadioChange = this.handleRadioChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleApproval = this.handleApproval.bind(this);
+        this.handleRejection = this.handleRejection.bind(this);
+    }
+    
+    componentWillReceiveProps(nextProps){
+        if (nextProps.errors){
+            this.setState ({
+                errors: nextProps.errors
+            });
+    
+        }
     }
     
     componentDidMount() {
-        axios.get(`http://localhost:8080/api/users/userRequests`)
-          .then(res => {
+        this.props.getUserRequests().then(res => {
             const requests = res.data;
             this.setState({requests });
           })  
@@ -60,13 +70,13 @@ class ManageUsers extends Component {
         };
     
           this.props.createNewUser(newUser, this.props.history);
+          alert("User Added!")
           window.location.reload();
       }
 
     handleSearch = event => {
         event.preventDefault();
-        axios.get(`http://localhost:8080/api/users/searchUser/${this.state.search}`)
-          .then(res => {
+        this.props.searchUserData(this.state.search).then(res => {
             const searchUser = res.data;
             this.setState({ searchUser });
           })
@@ -82,21 +92,23 @@ class ManageUsers extends Component {
             phone: this.state.editnumb,
             address: this.state.editadd,
           };
-      
-        axios.post(`http://localhost:8080/api/users/editUser/${this.state.searchUser.username}`, editUser);
+        this.props.editUserDetails(this.state.searchUser.username, editUser);
+        alert("User details editted!")
         window.location.reload();
     }
 
     handleBlock = event => {
         event.preventDefault();
-        const res =  axios.post(`http://localhost:8080/api/users/blockUser/${this.state.searchUser.username}`);
+        this.props.blockUserAccount(this.state.searchUser.username);
+        alert("User has been blocked!")
         window.location.reload();
     }
 
     handleUnblock = event => {
         event.preventDefault();
-        const res =  axios.post(`http://localhost:8080/api/users/unblockUser/${this.state.searchUser.username}`);
-        window.location.reload();  
+        this.props.unblockUserAccount(this.state.searchUser.username);
+        alert("User has been unblocked!")  
+        window.location.reload();
     }
     
     onChange(e) {
@@ -114,6 +126,16 @@ class ManageUsers extends Component {
     handleEdit (event){
         this.setState({ edit: event.target.value });
 
+    }
+
+    handleApproval(id) {
+        this.props.approveUserRequest(id);
+        window.location.reload();
+    }
+
+    handleRejection (id) {
+        this.props.rejectUserRequest(id);
+        window.location.reload();
     }
 
     render() {
@@ -244,8 +266,8 @@ class ManageUsers extends Component {
                     <div className="requests" style={{ width: "70%", marginLeft: "10%", fontWeight: "bold"}}>
                         {requestNum}
                         { this.state.requests.map(request => <><br></br>Name: {request.fullName} <br></br>Email Address: {request.username} <br></br>User Type: {request.userType}<br></br>
-                        <input type="submit" className="btn btn-info btn-block mt-4" value="APPROVE" onClick={() => handleApproval(request.username)} style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "40%", float: "left"}} />
-                        <input type="submit" className="btn btn-info btn-block mt-4" value="REJECT" onClick={() => handleRejection(request.username)} style={{ backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "40%", float: "right"}} />
+                        <input type="submit" className="btn btn-info btn-block mt-4" value="APPROVE" onClick={() => this.handleApproval(request.username)} style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "40%", float: "left"}} />
+                        <input type="submit" className="btn btn-info btn-block mt-4" value="REJECT" onClick={() => this.handleRejection(request.username)} style={{ backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "40%", float: "right"}} />
                         <br></br> <br></br>
                         </>)}
                         <br></br> <br></br>
@@ -323,18 +345,16 @@ class ManageUsers extends Component {
         );
     }
 }
-const handleApproval = async id => {
-    const res = await axios.get(`http://localhost:8080/api/users/approve/${id}`);
-    window.location.reload();
-}
-
-const handleRejection = async id => {
-    const res = await axios.get(`http://localhost:8080/api/users/reject/${id}`);
-    window.location.reload();
-}
 
 ManageUsers.propTypes = {
     createNewUser: PropTypes.func.isRequired,
+    getUserRequests: PropTypes.func.isRequired,
+    searchUserData: PropTypes.func.isRequired,
+    approveUserRequest: PropTypes.func.isRequired,
+    rejectUserRequest: PropTypes.func.isRequired,
+    blockUserAccount: PropTypes.func.isRequired,
+    unblockUserAccount: PropTypes.func.isRequired,
+    editUserDetails: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
   };
   
@@ -342,4 +362,7 @@ ManageUsers.propTypes = {
     errors: state.errors
   });
   
-export default connect(mapStateToProps, { createNewUser })(ManageUsers);
+export default connect(mapStateToProps, 
+    { createNewUser, getUserRequests, searchUserData, approveUserRequest, rejectUserRequest, 
+        blockUserAccount, unblockUserAccount, editUserDetails})
+    (ManageUsers);
