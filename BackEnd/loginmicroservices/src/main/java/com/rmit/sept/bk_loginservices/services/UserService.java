@@ -91,12 +91,28 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void editUser (User user){
-        user.setABN(user.getABN());
-        user.setFullName(user.getFullName());
-        user.setAdrress(user.getAddress());
-        user.setPhone(user.getPhone());
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    public void editUser (String id, User editInfo){
+        User user = userRepository.findByUsername(id);
+        
+        if (editInfo.getABN() != ""){
+            user.setABN(editInfo.getABN());
+        }
+        if (editInfo.getFullName() != ""){
+            user.setFullName(editInfo.getFullName());
+        }
+        if (editInfo.getAddress() != ""){
+            user.setAdrress(editInfo.getAddress());
+        }
+        if (editInfo.getPhone() != ""){
+            user.setPhone(editInfo.getPhone());
+        }
+        if (editInfo.getPhone() != ""){
+            user.setPhone(editInfo.getPhone());
+        }
+        if (editInfo.getPassword() != ""){
+            user.setPassword(bCryptPasswordEncoder.encode(editInfo.getPassword()));
+        }
+        
         userRepository.save(user);
     }
 }

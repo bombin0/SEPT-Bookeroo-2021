@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import classnames from "classnames";
 import {createNewUser} from "../../actions/securityActions";
 import axios from "axios";
 
@@ -25,10 +24,15 @@ class ManageUsers extends Component {
             id: "",
             optional: "",
             edit: "false",
-            fn1: ""
+            editfn: "",
+            editadd: "",
+            editnumb: "",
+            editabn: "",
+            change: ""
         };
         this.onChange = this.onChange.bind(this);
         this.handleRadioChange = this.handleRadioChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
     }
     
@@ -37,8 +41,7 @@ class ManageUsers extends Component {
           .then(res => {
             const requests = res.data;
             this.setState({requests });
-          })
-          
+          })  
       }
 
     handleAdding = event => {
@@ -71,30 +74,41 @@ class ManageUsers extends Component {
       }
 
     submitEdit = event => {
-        console.log(this.state.fn1);
         event.preventDefault();
-        axios.post("http://localhost:8080/api/users/editUser", this.state.searchUser);
+        const editUser = {
+            fullName: this.state.editfn,
+            password: this.state.change,
+            abn: this.state.editabn,
+            phone: this.state.editnumb,
+            address: this.state.editadd,
+          };
+      
+        axios.post(`http://localhost:8080/api/users/editUser/${this.state.searchUser.username}`, editUser);
+        window.location.reload();
     }
 
-      handleBlock = event => {
+    handleBlock = event => {
         event.preventDefault();
         const res =  axios.post(`http://localhost:8080/api/users/blockUser/${this.state.searchUser.username}`);
         window.location.reload();
     }
 
-      handleUnblock = event => {
+    handleUnblock = event => {
         event.preventDefault();
         const res =  axios.post(`http://localhost:8080/api/users/unblockUser/${this.state.searchUser.username}`);
         window.location.reload();  
     }
     
-      onChange(e) {
-        console.log(e.target.value);
+    onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
-      }
+    }
 
-      handleRadioChange(event) {
-          this.setState({ userType: event.target.value });
+    handleRadioChange(event) {
+        this.setState({ userType: event.target.value });
+    }
+
+    handlePasswordChange(event) {
+        this.setState({change: event.target.value });
     }
 
     handleEdit (event){
@@ -110,81 +124,63 @@ class ManageUsers extends Component {
         let userT;
         let editForm;
         let abnForm;
+        let abnView;
 
         if (this.state.searchUser.userType == "shopOwner"){
             abnForm =
             <div className="form-group">
-            <b> ABN </b>
+            <b> ABN  (Current = {this.state.searchUser.abn})</b>
             <input
                 type="text"
                 placeholder="ABN (If valid)"
-                name="abn"
+                name="editabn"
                 style={{width: "100%"}}
-                required
-                value= {this.state.searchUser.abn}
+                value= {this.state.editabn}
                 onChange = {this.onChange}
             />
-        </div>
+            </div>
+            abnView = <div>
+                ABN: {this.state.searchUser.abn} <br></br>
+            </div>
         }
 
         if (this.state.edit != "false"){
             editForm =
             <form onSubmit={this.submitEdit}>
-                <b> FULL NAME </b>
+                <h2> Fill form to edit, if left blank the current detail will remain unchanged. </h2>
+                <b> FULL NAME (Current = {this.state.searchUser.fullName})</b>
                 <div className="form-group">
                     <input
                         type="text"
-                        name="fn"
+                        name="editfn"
                         style={{ width: "100%" }}
-                        required
-                        value= {this.state.searchUser.fullName}
+                        value= {this.state.editfn}
                         onChange={this.onChange}
                     />
                 </div>
-                <b> USERNAME </b>
-                <div className="form-group">
-                    <input
-                        type="email"
-                        name="uname"
-                        style={{ width: "100%" }}
-                        required
-                        value={this.state.searchUser.username}
-                        onChange={this.onChange}
-                    />
-                </div>
-                <b> CONTACT NUMBER </b>
+                <b> CONTACT NUMBER (Current = {this.state.searchUser.phone}) </b>
                 <div className="form-group">
                     <input
                         type="tel"
-                        name="telp"
+                        name="editnumb"
                         style={{ width: "100%" }}
-                        required
-                        defaultValue={this.state.searchUser.phone}
+                        value={this.state.editnumb}
                         onChange={this.onChange}
                     />
                 </div>
-                <b> ADDRESS </b>
+                <b> ADDRESS (Current = {this.state.searchUser.address}) </b>
                 <div className="form-group">
                     <input
                         type="text"
-                        name="homeAdd"
+                        name="editadd"
                         style={{ width: "100%" }}
-                        required
-                        defaultValue={this.state.searchUser.address}
+                        value={this.state.editadd}
                         onChange={this.onChange}
                     />
                 </div>
-                <b> PASSWORD </b>
-                <div className="form-group">
-                    <input
-                        type="text"
-                        name="pass"
-                        style={{ width: "100%" }}
-                        required
-                        defaultValue={this.state.searchUser.password}
-                        onChange={this.onChange}
-                    />
-                </div>
+                <b> PASSWORD </b> <br></br>
+                <input type="radio" id="change" name="change" value= "default" onChange={this.handlePasswordChange}/>
+                <label htmlFor="change">&nbsp;&nbsp; <b> Change to "default" </b> </label> 
                 {abnForm}
                 <input type="submit" className="btn btn-info btn-block mt-4" value="SUBMIT" style={{ backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "100%" }} />
             </form>
@@ -194,7 +190,10 @@ class ManageUsers extends Component {
             Name: {this.state.searchUser.fullName} <br></br>
             Email Address: {this.state.searchUser.username} <br></br>
             User Type: {this.state.searchUser.userType} <br></br>
-              </b>
+            Account Status: {this.state.searchUser.status} <br></br>
+            Phone Number: {this.state.searchUser.phone} <br></br>
+            {abnView}
+            </b>
         }
 
         if (this.state.userType == "shopOwner"){
@@ -316,6 +315,7 @@ class ManageUsers extends Component {
                         <label htmlFor="css"> &nbsp; <b> SHOP OWNER </b> </label><br></br>
                         {userT}
                         <input type="submit" className="btn btn-info btn-block mt-4" value="ADD USER" style={{ backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "15%" }} />
+                    <br></br>
                     </center>
                     </form>
                 </div>
@@ -332,8 +332,6 @@ const handleRejection = async id => {
     const res = await axios.get(`http://localhost:8080/api/users/reject/${id}`);
     window.location.reload();
 }
-
-
 
 ManageUsers.propTypes = {
     createNewUser: PropTypes.func.isRequired,
