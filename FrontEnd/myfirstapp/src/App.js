@@ -23,6 +23,7 @@ import { SET_CURRENT_USER } from "./actions/types";
 import { logout } from "./actions/securityActions";
 import SecuredRoute from "./securityUtils/SecureRoute";
 import AddBook from "./components/Books/AddBook";
+import updateBook from "./components/Books/updateBook";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -73,6 +74,7 @@ class App extends Component {
             <Route exact path="/adminManageBooks" component={ManageBooks} />
             <Route exact path="/addBook" component={AddBook} />
             <Route exact path="/browse" component={Browse} />
+            <Route exact path="/updateBook/:id" component={updateBook} />  
           </div>
         </Router>
       </Provider>
