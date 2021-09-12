@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import bookService from "../Books/services/bookService";
 
 class ManageBooks extends Component {
     constructor() {
@@ -9,6 +10,7 @@ class ManageBooks extends Component {
         this.state = {
             search: "",
             searchBooks: [],
+            id: "",
             title: "",
             author: "",
             description: "",
@@ -18,11 +20,13 @@ class ManageBooks extends Component {
             category: "",
             coverArt: null,
             contents: null,
-            edit: false
+            edit: false,
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onFileUpload = this.onFileUpload.bind(this);
+        this.editBook = this.editBook.bind(this);
+        this.removeBook = this.removeBook.bind(this);
     }
 
     onChange(e) {
@@ -64,11 +68,23 @@ class ManageBooks extends Component {
           this.state.edit = "false";
       }
 
+    editBook(id){
+        this.props.history.push(`/updateBook/${id}`)
+    }   
+
+    removeBook(id){
+        bookService.deleteBook(id).then( res => {
+            this.setState({searchBooks: this.state.searchBooks.filter(book => book.id !== id)});
+        });
+    }
+
     render() {
         let search;
         if (this.state.searchBooks.length == 0){
             search = <h5 style={{color:"red"}}><center> No search results. Please enter your search above. </center></h5>
         } 
+        
+
         return (
 
             <div className="Books">
@@ -189,13 +205,18 @@ class ManageBooks extends Component {
                                     <b>ISBN: </b>{book.isbn} <br/>
                                     <b>Category: </b>{book.category} <br/>
                                     <b>Description: </b>{book.description} <br/>
-                                    <b>Price: </b> {book.price}<br/>
+                                    <b>Price: </b> {book.price} 
+                                    <br/>
                                     </td>
-                                    <td>
-                                <input type="submit" className="btn btn-info btn-block mt-4" value="EDIT" style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "100%", float: "left"}} />
+                                <td>
+                                <form onSubmit={() => this.editBook(book.id)}>
+                                <input type="submit" className="btn btn-info btn-block mt-4" value="EDIT"  style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "100%", float: "left"}} />
+                                </form>
                                 </td>
                                 <td>
+                                <form onSubmit={() => this.removeBook(book.id)}>
                                 <input type="submit" className="btn btn-info btn-block mt-4" value="REMOVE"  style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "100%", float: "left"}} />
+                                </form>
                                 </td>
                                 </tr>
                             </table>

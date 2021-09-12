@@ -24,6 +24,10 @@ public class BookService {
 
         return bookRepository.save(newBook);
     }
+
+    // public int updatePrice (float price, String ISBN){
+    //     return bookRepository.setBookSetPriceForISBN(price, ISBN);
+    // }
     
     public List<Book> bookSearch (String search){
         return bookRepository.findByISBNOrTitleOrAuthorOrCategoryIgnoreCaseContaining(search, search, search, search);
@@ -36,4 +40,9 @@ public class BookService {
     public List<Book> bestPriceBooks (){
         return bookRepository.findByPriceLessThanEqual(30);
     }
+
+    public Object findById(Long id) {
+        return null;
+    }
+
 }
