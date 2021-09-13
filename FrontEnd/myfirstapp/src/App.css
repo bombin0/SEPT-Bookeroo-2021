@@ -91,6 +91,8 @@ a:active {
   background-color:rgb(241, 179, 8);
 }
 
+
+
 #welcome{
   font-size: 350%;
 }
@@ -114,6 +116,7 @@ a:active {
   margin-top:40px;
   font-size: 175%;
   text-align: center;
+  
 }
 
 #enquiries{
@@ -130,10 +133,22 @@ a:active {
   margin-left: 100%;
 }
 
+.collapse{
+  display: flex;
+  justify-content: center;
+}
+
 .child{
   width:700px;
   margin:20px 20px;
  
+}
+
+.citem{
+ 
+  background-color:darkgray;
+  height: 200px;
+  width: 200px;
 }
 
 .contact-us-child{
@@ -256,3 +271,43 @@ a:active {
   padding: 20px;
   background: gainsboro;
 }
+
+
+
+.book-container{
+
+  height: 50%;
+  width: 60%;
+  margin-left: 20%;
+  background-color: black;
+  
+}
+
+.card-columns{
+  /* margin-left: 15%; */
+  display: grid;
+  grid-template-columns: 15% 15% 15% 15% 15%; 
+  /* grid-template-columns: minmax(100px, 200px); */
+  
+ 
+  justify-content: center;
+}
+
+.card-columns > div{
+  text-align: center;
+}
+
+.card{
+  margin-top: 1rem;
+  display: flex;
+ 
+  box-shadow: 10px 8px 16px 0 black;
+}
+
+.card:hover {
+  opacity: 0.5;
+  background-color: #000;
+  color: white;
+}
+
+

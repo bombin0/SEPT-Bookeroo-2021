@@ -34,7 +34,6 @@ public class BookController {
 
     @PostMapping("/save")
     public ResponseEntity<Book> createNewBook(@RequestBody Book book){
-        System.out.println(book.getAuthor());
         Book newBook = bookService.saveBook(book);
         return new ResponseEntity<Book>(newBook, HttpStatus.CREATED);
     }
@@ -42,6 +41,11 @@ public class BookController {
     @GetMapping("/searchbook/{search}")
     public List<Book> searchBook(@PathVariable String search){
        return bookService.bookSearch(search);
+    }
+
+    @GetMapping("/allBooks")
+    public Iterable<Book> allBooks(){
+       return bookService.getAllBooks();
     }
 
     @GetMapping("/topRatingBooks")

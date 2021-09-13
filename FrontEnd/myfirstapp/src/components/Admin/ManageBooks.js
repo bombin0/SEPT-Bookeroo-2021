@@ -200,7 +200,7 @@ class ManageBooks extends Component {
                             <table style={{borderCollapse:"separate", borderSpacing:"2em"}}>
                                 <tr>
                                     <td> 
-                                    <b> Title: </b>{book.title} <br/>
+                                    <b>Title: </b>{book.title} <br/>
                                     <b>Author: </b>{book.author} <br/>
                                     <b>ISBN: </b>{book.isbn} <br/>
                                     <b>Category: </b>{book.category} <br/>
