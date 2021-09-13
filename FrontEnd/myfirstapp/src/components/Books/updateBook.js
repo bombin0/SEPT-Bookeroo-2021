@@ -32,7 +32,7 @@ class updateBook extends Component {
                 title: book.title,
                 author: book.author,
                 description: book.description,
-                price: parseInt(book.price),
+                price: book.price,
                 isbn: book.isbn,
                 rating: book.rating,
                 category: book.category,
@@ -46,7 +46,7 @@ class updateBook extends Component {
             title: this.state.title,
             author: this.state.author,
             description: this.state.description,
-            price: parseInt(this.state.price),
+            price: parseFloat(this.state.price),
             isbn: this.state.isbn,
             rating: this.state.rating,
             category: this.state.category,
@@ -71,7 +71,7 @@ class updateBook extends Component {
     }
 
     changePriceHandler= (event) => {
-        this.setState({price: event.target.value});
+            this.setState({price: parseFloat(event.target.value)});
     }
 
     changeISBNHandler= (event) => {

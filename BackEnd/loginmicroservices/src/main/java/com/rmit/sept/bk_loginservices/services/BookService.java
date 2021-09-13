@@ -11,23 +11,20 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public Book saveBook(Book newBook){
+    public Book saveBook(Book newBook) {
 
         newBook.setAuthor(newBook.getAuthor());
         newBook.setTitle(newBook.getTitle());
         newBook.setCategory(newBook.getCategory());
-        //newBook.setContents(newBook.getContents());
+        newBook.setContents(newBook.getContents());
         newBook.setDescription(newBook.getDescription());
         newBook.setPrice(newBook.getPrice());
         newBook.setRating(newBook.getRating());
-        //newBook.setCoverArt(newBook.getCoverArt());
+        newBook.setCoverArt(newBook.getCoverArt());
 
         return bookRepository.save(newBook);
     }
 
-    // public int updatePrice (float price, String ISBN){
-    //     return bookRepository.setBookSetPriceForISBN(price, ISBN);
-    // }
     
     public List<Book> bookSearch (String search){
         return bookRepository.findByISBNOrTitleOrAuthorOrCategoryIgnoreCaseContaining(search, search, search, search);
