@@ -36,6 +36,11 @@ public class BookController {
        return bookService.bookSearch(search);
     }
 
+    @GetMapping("/allBooks")
+    public Iterable<Book> allBooks(){
+       return bookService.getAllBooks();
+    }
+
     @GetMapping("/topRatingBooks")
     public List<Book> topRatedBooks(){
         return bookService.topRatingBooks();

@@ -29,6 +29,10 @@ public class BookService {
         return bookRepository.findByISBNOrTitleOrAuthorOrCategoryIgnoreCaseContaining(search, search, search, search);
     }
 
+    public Iterable<Book> getAllBooks (){
+        return bookRepository.findAll();
+    } 
+
     public List<Book> topRatingBooks (){
         return bookRepository.findByRating(5);
     }

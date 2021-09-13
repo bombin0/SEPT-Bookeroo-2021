@@ -15,8 +15,8 @@ public class Book {
     private String description;
     private float price;
     private int rating;
-    private Blob coverArt;
-    private Blob contents;
+    private String coverArt;
+    private String contents;
     private String ISBN;
     private String category;
 
@@ -75,19 +75,19 @@ public class Book {
         this.rating = rating;
     }
 
-    public Blob getCoverArt() {
+    public String getCoverArt() {
         return this.coverArt;
     }
 
-    public void setCoverArt(Blob coverArt) {
+    public void setCoverArt(String coverArt) {
         this.coverArt = coverArt;
     }
 
-    public Blob getContents() {
+    public String getContents() {
         return this.contents;
     }
 
-    public void setContents(Blob contents) {
+    public void setContents(String contents) {
         this.contents = contents;
     }
 

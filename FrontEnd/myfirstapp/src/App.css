@@ -144,6 +144,13 @@ a:active {
  
 }
 
+.citem{
+ 
+  background-color:darkgray;
+  height: 200px;
+  width: 200px;
+}
+
 .contact-us-child{
   width:525px;
   margin:100px 20px;
@@ -264,3 +271,43 @@ a:active {
   padding: 20px;
   background: gainsboro;
 }
+
+
+
+.book-container{
+
+  height: 50%;
+  width: 60%;
+  margin-left: 20%;
+  background-color: black;
+  
+}
+
+.card-columns{
+  /* margin-left: 15%; */
+  display: grid;
+  grid-template-columns: 15% 15% 15% 15% 15%; 
+  /* grid-template-columns: minmax(100px, 200px); */
+  
+ 
+  justify-content: center;
+}
+
+.card-columns > div{
+  text-align: center;
+}
+
+.card{
+  margin-top: 1rem;
+  display: flex;
+ 
+  box-shadow: 10px 8px 16px 0 black;
+}
+
+.card:hover {
+  opacity: 0.5;
+  background-color: #000;
+  color: white;
+}
+
+
