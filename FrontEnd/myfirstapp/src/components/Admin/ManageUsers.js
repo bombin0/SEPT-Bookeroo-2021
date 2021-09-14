@@ -154,7 +154,6 @@ class ManageUsers extends Component {
             <b> ABN  (Current = {this.state.searchUser.abn})</b>
             <input
                 type="text"
-                placeholder="ABN (If valid)"
                 name="editabn"
                 style={{width: "100%"}}
                 value= {this.state.editabn}

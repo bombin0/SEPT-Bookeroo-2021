@@ -2,7 +2,6 @@ import React, { Component, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Carousel } from "react-bootstrap";
 import axios from "axios";
 import harry from "../../images/Harry.jpg";
 import boy from "../../images/boy.jpg";

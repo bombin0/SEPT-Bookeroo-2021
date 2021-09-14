@@ -75,10 +75,24 @@ public class BookController {
     @PutMapping("/updateBook/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookInfo){
         Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book does not exist with ID: " + id));
-        book.setAuthor(bookInfo.getAuthor());
-        book.setTitle(bookInfo.getTitle());
-        book.setISBN(bookInfo.getISBN());
-        book.setDescription(bookInfo.getDescription());
+        if (bookInfo.getAuthor() != ""){
+            book.setAuthor(bookInfo.getAuthor());
+        }
+        if (bookInfo.getTitle() != ""){
+            book.setTitle(bookInfo.getTitle());
+        }
+        if (bookInfo.getISBN() != ""){
+            book.setISBN(bookInfo.getISBN());
+        }
+        if (bookInfo.getDescription() != ""){
+            book.setDescription(bookInfo.getDescription());
+        }
+        if (bookInfo.getCategory() != ""){
+            book.setCategory(bookInfo.getCategory());
+        }
+        if (bookInfo.getPrice() != 0){
+            book.setPrice(bookInfo.getPrice());
+        }
         
         Book updatedBook = bookRepository.save(book);
         return ResponseEntity.ok(updatedBook);
