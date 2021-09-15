@@ -15,7 +15,7 @@ class Browse extends Component {
             books: [],
             searchBooks: [],
             search: "",
-            bookType:"",
+            bookType:"all",
             topRated: []
         };
         this.onChange = this.onChange.bind(this);
@@ -49,7 +49,7 @@ class Browse extends Component {
             .then(res => {
                 this.setState({ topRated: res.data });
             })
-        document.getElementsByName("bookType").disabled = true
+        
     }
 
     render() {
@@ -59,12 +59,12 @@ class Browse extends Component {
         let searching;
 
 
-        if (this.state.searchBooks.length != 0 && this.state.bookType=="") {
+        if (this.state.searchBooks.length != 0) {
             console.log(this.state.searchBooks.length)
             searching =
             <div className="card-columns ">
 
-            {searchBooks.map(books => <div class="card">
+            {searchBooks.map(books => <div class="card" id="book-shop">
                 <img className="card-img-top" src={harry} alt="Card image cap"></img>
                 <div className="card-body">
                    <p> <b>Title:</b> {books.title} <br></br>
@@ -74,14 +74,14 @@ class Browse extends Component {
             </div>)}
 
         </div>
-
+            this.state.searchBooks = [];
         }
 
-        if (this.state.searchBooks.length == 0 && this.state.bookType=="all") {
+        else if (this.state.searchBooks.length == 0 && this.state.bookType=="all") {
             console.log(this.state.searchBooks.length)
             searching =
             <div className="card-columns ">
-            {books.map(books => <div class="card">
+            {books.map(books => <div class="card" id="book-shop">
                 <img class="card-img-top" src={harry} alt="Card image cap"></img>
                 <div class="card-body">
                    <b> Title: </b> {books.title} <br></br>
@@ -92,11 +92,11 @@ class Browse extends Component {
         </div>
         }
 
-        if (this.state.bookType=="topRated"&&this.state.searchBooks.length == 0) {
+        else if (this.state.searchBooks.length == 0 && this.state.bookType=="topRated") {
             console.log(this.state.searchBooks.length)
             searching =
             <div className="card-columns ">
-            {topRated.map(books => <div class="card">
+            {topRated.map(books => <div class="card" id="book-shop">
                 <img class="card-img-top" src={harry} alt="Card image cap"></img>
                 <div class="card-body">
                    <b> Title: </b> {books.title} <br></br>
@@ -143,7 +143,7 @@ class Browse extends Component {
                     </form>
 
                     
-                        <input className = "bookType"type="radio" id="all" name="bookType" value="all" onChange={this.handleRadioChange} />
+                        <input className = "bookType"type="radio" id="all" name="bookType" value="all" onChange={this.handleRadioChange } />
                         <label htmlFor="all">&nbsp; <b>All </b> </label> &nbsp;&nbsp;
                         <input className = "bookType" type="radio" id="topRated" name="bookType" value="topRated" onChange={this.handleRadioChange} />
                         <label htmlFor="topRated"> &nbsp; <b> Top Rated </b> </label><br></br>
