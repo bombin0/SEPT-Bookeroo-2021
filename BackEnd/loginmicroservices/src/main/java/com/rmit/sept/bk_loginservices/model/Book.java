@@ -15,8 +15,14 @@ public class Book {
     private String description;
     private float price;
     private int rating;
-    private Blob coverArt;
-    private Blob contents;
+    private String owner;
+    
+    
+
+    @Lob
+    private byte[] coverArt;
+    @Lob
+    private byte[] contents;
     private String ISBN;
     private String category;
 
@@ -71,23 +77,31 @@ public class Book {
         return this.rating;
     }
 
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     public void setRating(int rating) {
         this.rating = rating;
     }
 
-    public Blob getCoverArt() {
+    public byte[] getCoverArt() {
         return this.coverArt;
     }
 
-    public void setCoverArt(Blob coverArt) {
+    public void setCoverArt(byte[] coverArt) {
         this.coverArt = coverArt;
     }
 
-    public Blob getContents() {
+    public byte[] getContents() {
         return this.contents;
     }
 
-    public void setContents(Blob contents) {
+    public void setContents(byte[] contents) {
         this.contents = contents;
     }
 
@@ -135,6 +149,5 @@ public class Book {
     protected void onUpdate(){
         this.update_At = new Date();
     }
-
 
 }

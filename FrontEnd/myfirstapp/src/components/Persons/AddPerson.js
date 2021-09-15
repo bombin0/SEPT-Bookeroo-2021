@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import bookService from "../Books/services/bookService";
 import {createPerson} from "../../actions/personActions";
 import Harry from "../../images/Harry.jpg";
 import pilgrim from "../../images/pilgrim.jpg";
@@ -17,13 +19,14 @@ class AddPerson extends Component {
         this.state= {
         title: "",
         author: "",
-        genre: "",
+        category: "",
         description: "",
         price: "",
         coverArt: null,
         contents: null,
         search: "",
         searchBooks: [],
+        books:[],
     }; 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -39,13 +42,20 @@ class AddPerson extends Component {
         const newListing = {
             title: this.state.title,
             author: this.state.author,
-            genre: this.state.genre,
+            category: this.state.category,
             description: this.state.description,
             price:this.state.price,  
         }
         axios.post("http://localhost:8080/api/books/save", newListing);
         window.location.reload();
 
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:8080/api/books/allBooks")
+            .then(res => {
+                this.setState({ books: res.data });
+            })
     }
 
     onFileUpload(e){
@@ -62,10 +72,64 @@ class AddPerson extends Component {
         this.state.edit = "false";
     }
 
+    editBook(id){
+        this.props.history.push(`/updateBook/${id}`)
+    }   
+
+    removeBook(id){
+        bookService.deleteBook(id).then( res => {
+            this.setState({searchBooks: this.state.searchBooks.filter(book => book.id !== id)});
+        });
+    }
+
     render() {
-      let search;
+        const { books } = this.state
+        const { searchBooks } = this.state
+        let search;
+        let searching;
+
+        if (this.state.searchBooks.length == 0) {
+            console.log(this.state.searchBooks.length)
+            searching =
+            <div className="card-columns ">
+        </div>
+        }
+
+        if (this.state.searchBooks.length != 0) {
+            console.log(this.state.searchBooks.length)
+            searching =
+            <div className="card-columns ">
+
+            {searchBooks.map(books => <div class="card">
+                <img className="card-img-top" src={Harry} alt="Card image cap"></img>
+                <div className="card-body">
+                <p> <b>Title:</b> {books.title} <br></br>
+                        Author: {books.author} <br></br>
+                        Price: $ {books.price}</p>
+                </div>
+            </div>)}
+
+        </div>
+
+        }
+
         return (
             <div className="Listing">
+                 
+                 <nav className="navbar navbar-expand-sm navbar-dark bg-light mb-4">
+
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+                        <span className="navbar-toggler-icon" />
+                    </button>
+                    <div className="collapse navbar-collapse justify-content-space-around" id="navDown">
+                        <div className="navbar-nav">
+                            <Link style={{ color: "black", textDecoration: "underline" }} className="nav-item nav-link active" to="/browse">Home <span className="sr-only">(current)</span></Link>
+                            <Link style={{ color: "black" }} className="nav-item nav-link" to="#">My Orders</Link>
+                            <Link style={{ color: "black" }} className="nav-item nav-link" to="/Browse">Browse</Link>
+                        </div>
+                    </div>
+                </nav>
+
                 <div className="leftSide" style={{ marginLeft: "2%", float: "left", width: "30%", backgroundColor: "rgba(220, 220, 220)" }}>
                     <br></br>
                     <h3 style={{ textAlign: "center", color: "grey" }}>Create New Listing</h3>
@@ -160,10 +224,8 @@ class AddPerson extends Component {
                                 />
                                 <button type="submit" style={{ height: "40px", backgroundColor: "rgb(241, 179, 8)", border: "yellow" }}><i class="fa fa-search"></i> SEARCH  </button>
                             </form>
-                        </center>
-                        <br />
+                        </center>                     
                         <div>
-                            
                             {search}
                             { this.state.searchBooks.map(book =>
                             
@@ -176,38 +238,51 @@ class AddPerson extends Component {
                                     <b>Description: </b>{book.description} <br/>
                                     <b>Price: </b> {book.price}<br/>
                                     </td>
+                                <td>
+                                <form onSubmit={() => this.editBook(book.id)}>
+                                <input type="submit" className="btn btn-info btn-block mt-4" value="EDIT"  style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "100%", float: "left"}} />
+                                </form>
+                                </td>
+                                <td>
+                                <form onSubmit={() => this.removeBook(book.id)}>
+                                <input type="submit" className="btn btn-info btn-block mt-4" value="REMOVE"  style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "100%", float: "left"}} />
+                                </form>
+                                </td>
                                 </tr>
                             </table>      
                             )}
-                            <br></br>
+                            
                        </div>
-                       <div>
-                          <table style={{borderCollapse:"separate", borderSpacing:"2em"}}>
-                            <tc>
-                              <b><img src={Harry} style={{width:"20%"}}/></b><br/>
-                              <b>Title: Harry Potter</b><br/>
-                              <b>J.K Rowling</b><br/>
-                              <b>Fantasy</b><br/>
-                              <b>$24.95</b><br/>
-                            </tc>
-                            <tc>
-                              <b><img src={pilgrim} style={{width:"20%"}}/></b><br/>
-                              <b>I am Pilgrim</b><br/>
-                              <b>Terry Hayes</b><br/>
-                              <b>Crime</b><br/>
-                              <b>$28.55</b><br/>
-                            </tc>
-                            <tr>
-                              <b><img src={boy} style={{width:"20%"}}/></b><br/>
-                              <b>Boy Swallows Univers</b><br/>
-                              <b>Trent Dalton</b><br/>
-                              <b>bildungsroman</b><br/>
-                              <b>$21.99</b><br/>
-                            </tr>
-                          </table>        
-                      </div>         
+                       
+                        <div>
 
+                        <div className="card-columns ">
 
+                            {books.map(books => <div class="card">
+                                <img class="card-img-top" src={Harry} alt="Card image cap"></img>
+                                <div class="card-body">
+                                <b> Title: </b> {books.title} <br></br>
+                                <b> Author:</b> {books.author} <br></br>
+                                <b> Genre:</b> {books.category} <br></br>
+                                <b> Price:</b> $ {books.price}
+
+                                <td>
+                                <form onSubmit={() => this.editBook(books.id)}>
+                                <input type="submit" className="btn btn-info btn-block mt-4" value="EDIT"  style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "100%", float: "left"}} />
+                                </form>
+                                </td>
+                                <td>
+                                <form onSubmit={() => this.removeBook(books.id)}>
+                                <input type="submit" className="btn btn-info btn-block mt-4" value="REMOVE"  style={{backgroundColor: "rgb(241, 179, 8)", border: "yellow", width: "100%", float: "right"}} />
+                                </form>
+                                </td>
+
+                                </div>
+                            </div>)}
+
+                            </div>     
+
+                        </div>                     
                     </div>
                 </div>
 

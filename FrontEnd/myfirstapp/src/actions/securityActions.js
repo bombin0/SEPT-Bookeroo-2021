@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_ERRORS, SET_CURRENT_USER} from "./types";
+import {GET_BOOK, GET_ERRORS, SET_CURRENT_USER} from "./types";
 import setJWTToken from "../securityUtils/setJWTToken";
 import jwt_decode from "jwt-decode";
 
@@ -23,6 +23,14 @@ export const createNewUser = (newUser, history) => async dispatch => {
     }
 
 };
+
+export const loadusers = async dispatch =>{
+  const res = await axios.get("http://localhost:8080/api/books/searchBook");
+    dispatch({
+      type: GET_BOOK,
+      payload: res.data
+  });
+}
 
 export const login = LoginRequest => async dispatch => {
     try {

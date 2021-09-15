@@ -118,10 +118,9 @@ public class UserController {
         userService.unblockUser(id);
     }
 
-    @PostMapping("/editUser")
-    public void editUser(@Valid @RequestBody User user, BindingResult result){  
-        System.out.println(user.getFullName());
-        userService.editUser(user);
+    @PostMapping("/editUser/{id}")
+    public void editUser(@PathVariable String id, @RequestBody User user){  
+        userService.editUser(id, user);
     }
 
 }
