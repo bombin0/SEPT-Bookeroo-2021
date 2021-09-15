@@ -14,10 +14,12 @@ class Browse extends Component {
         this.state = {
             books: [],
             searchBooks: [],
-            search: ""
+            search: "",
+            bookType:"",
+            topRated: []
         };
         this.onChange = this.onChange.bind(this);
-
+        this.handleRadioChange = this.handleRadioChange.bind(this);
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -41,31 +43,23 @@ class Browse extends Component {
         this.state.edit = "false";
     }
 
+    handleRadioChange(event) {
+        this.setState({ bookType: event.target.value });
+        axios.get("http://localhost:8080/api/books/topRatingBooks")
+            .then(res => {
+                this.setState({ topRated: res.data });
+            })
+        document.getElementsByName("bookType").disabled = true
+    }
+
     render() {
         const { books } = this.state
         const { searchBooks } = this.state
+        const {topRated} = this.state
         let searching;
 
 
-        if (this.state.searchBooks.length == 0) {
-            console.log(this.state.searchBooks.length)
-            searching =
-            <div className="card-columns ">
-
-            {books.map(books => <div class="card">
-                <img class="card-img-top" src={harry} alt="Card image cap"></img>
-                <div class="card-body">
-                   <b> Title: </b> {books.title} <br></br>
-                   <b> Author:</b> {books.author} <br></br>
-                   <b> Price:</b> $ {books.price}
-                </div>
-            </div>)}
-
-        </div>
-
-        }
-
-        if (this.state.searchBooks.length != 0) {
+        if (this.state.searchBooks.length != 0 && this.state.bookType=="") {
             console.log(this.state.searchBooks.length)
             searching =
             <div className="card-columns ">
@@ -83,6 +77,36 @@ class Browse extends Component {
 
         }
 
+        if (this.state.searchBooks.length == 0 && this.state.bookType=="all") {
+            console.log(this.state.searchBooks.length)
+            searching =
+            <div className="card-columns ">
+            {books.map(books => <div class="card">
+                <img class="card-img-top" src={harry} alt="Card image cap"></img>
+                <div class="card-body">
+                   <b> Title: </b> {books.title} <br></br>
+                   <b> Author:</b> {books.author} <br></br>
+                   <b> Price:</b> $ {books.price}
+                </div>
+            </div>)}
+        </div>
+        }
+
+        if (this.state.bookType=="topRated"&&this.state.searchBooks.length == 0) {
+            console.log(this.state.searchBooks.length)
+            searching =
+            <div className="card-columns ">
+            {topRated.map(books => <div class="card">
+                <img class="card-img-top" src={harry} alt="Card image cap"></img>
+                <div class="card-body">
+                   <b> Title: </b> {books.title} <br></br>
+                   <b> Author:</b> {books.author} <br></br>
+                   <b> Price:</b> $ {books.price}
+                </div>
+            </div>)}
+        </div>
+        }
+
         return (
             <div>
                 <nav className="navbar navbar-expand-sm navbar-dark bg-light mb-4">
@@ -94,7 +118,7 @@ class Browse extends Component {
                         <div className="navbar-nav">
                             <Link style={{ color: "black", textDecoration: "underline" }} className="nav-item nav-link active" to="/browse">Home <span className="sr-only">(current)</span></Link>
                             <Link style={{ color: "black" }} className="nav-item nav-link" to="#">My Orders</Link>
-                            <Link style={{ color: "black" }} className="nav-item nav-link" to="/addPerson">My Shop</Link>
+                            <Link style={{ color: "black" }} className="nav-item nav-link" to="/myShop">My Shop</Link>
                         </div>
                     </div>
                 </nav>
@@ -117,6 +141,14 @@ class Browse extends Component {
                             </div>
                         </div>
                     </form>
+
+                    
+                        <input className = "bookType"type="radio" id="all" name="bookType" value="all" onChange={this.handleRadioChange} />
+                        <label htmlFor="all">&nbsp; <b>All </b> </label> &nbsp;&nbsp;
+                        <input className = "bookType" type="radio" id="topRated" name="bookType" value="topRated" onChange={this.handleRadioChange} />
+                        <label htmlFor="topRated"> &nbsp; <b> Top Rated </b> </label><br></br>
+                        <br></br>
+                    
                 </center>
 
                 <a href="/" style={{color:"black"}}>{searching}</a>
