@@ -47,6 +47,7 @@ public class User implements UserDetails {
         this.fullName = fullname;
         this.password = password;
         this.confirmPassword = confirmPassword;
+        this.userType = userType;
     }
 
     public Long getId() {
