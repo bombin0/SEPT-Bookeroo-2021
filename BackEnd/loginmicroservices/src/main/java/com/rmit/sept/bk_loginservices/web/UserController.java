@@ -66,7 +66,6 @@ public class UserController {
     private AuthenticationManager authenticationManager;
 
 
-
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult result){
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
@@ -121,6 +120,11 @@ public class UserController {
     @PostMapping("/editUser/{id}")
     public void editUser(@PathVariable String id, @RequestBody User user){  
         userService.editUser(id, user);
+    }
+
+    @GetMapping("/getLoggedInUser")
+    public Long getLoggedInUser(@RequestBody String token){  
+        return tokenProvider.getUserIdFromJWT(token);
     }
 
 }

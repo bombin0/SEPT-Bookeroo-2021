@@ -1,6 +1,5 @@
 package com.rmit.sept.bk_loginservices.model;
 
-import java.sql.Blob;
 import javax.persistence.*;
 import java.util.Date;
 

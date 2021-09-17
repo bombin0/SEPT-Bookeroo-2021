@@ -94,7 +94,7 @@ class updateBook extends Component {
                         <div className = "row">
                             <div className = "card col-md-6 offset-md-3 offset-md-3">
                                 <h3 className="text-center">Update Book</h3>
-                                <h7 className="text-center"> Fill form to edit, if left blank the current detail will remain unchanged. </h7>
+                                <h7 className="text-center"> Fill form to edit, if uneditted the current detail will remain unchanged. </h7>
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
