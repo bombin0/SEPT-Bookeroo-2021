@@ -57,13 +57,16 @@ public class UserService {
         return userRepository.findByUserTypeAndStatus("shopOwner", "pending");
     }
 
-    public User approvePendingUsers(String ID){
-        User user = userRepository.findByUsername(ID);;
-        user.setStatus("active");
-        user.setPassword(user.getOptional());
-        user.setOptional("");
-        User newUser = userRepository.save(user);
-        return newUser;
+    public User approvePendingUsers(String ID) {
+        User user = userRepository.findByUsername(ID);
+        if (user.getStatus() == "pending") {
+            user.setStatus("active");
+            user.setPassword(user.getOptional());
+            user.setOptional("");
+            User newUser = userRepository.save(user);
+            return newUser;
+        }
+        return user;
     }
 
     public void rejectPendingUser(String ID){
@@ -85,10 +88,12 @@ public class UserService {
 
     public void unblockUser (String ID){
         User user = userRepository.findByUsername(ID);
-        user.setStatus("active");
-        user.setPassword(user.getOptional());
-        user.setOptional("");
-        userRepository.save(user);
+        if (user.getStatus() == "block"){
+            user.setStatus("active");
+            user.setPassword(user.getOptional());
+            user.setOptional("");
+            userRepository.save(user);
+        }
     }
 
     public void editUser (String id, User editInfo){
