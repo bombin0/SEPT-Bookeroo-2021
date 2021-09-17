@@ -23,7 +23,7 @@ import { logout } from "./actions/securityActions";
 import SecuredRoute from "./securityUtils/SecureRoute";
 import AddBook from "./components/Books/AddBook";
 import updateBook from "./components/Books/updateBook";
-import NewListing from "./components/Books/newListing";
+
 
 const jwtToken = localStorage.jwtToken;
 

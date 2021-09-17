@@ -16,6 +16,7 @@ class updateBook extends Component {
             category: "",
             coverArt: null,
             contents: null,
+            initial: []
         }
         this.changeTitleHandler = this.changeTitleHandler.bind(this);
         this.changeAuthorHandler = this.changeAuthorHandler.bind(this);
@@ -37,6 +38,7 @@ class updateBook extends Component {
                 rating: book.rating,
                 category: book.category,
             });
+            console.log(res.data)
         });
     }
 
@@ -54,7 +56,7 @@ class updateBook extends Component {
         console.log('book => ' + JSON.stringify(book));
         console.log('id => ' + JSON.stringify(this.state.id));
         bookService.updateBook(book, this.state.id).then( res =>{
-            this.props.history.push('/adminManageBooks');
+            this.props.history.push('/myShop');
         });
     }
     
@@ -83,10 +85,11 @@ class updateBook extends Component {
     }
 
     cancel(){
-        this.props.history.push('/adminManageBooks');
+        this.props.history.push('/myShop');
     }
 
     render() {
+
         return (
             <div>
                 <br></br>
@@ -98,7 +101,7 @@ class updateBook extends Component {
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
-                                            <label> Title: </label>
+                                            <label> Title: </label> 
                                             <input placeholder="Title" name="title" className="form-control" 
                                                 value={this.state.title} onChange={this.changeTitleHandler}/>
                                         </div>
