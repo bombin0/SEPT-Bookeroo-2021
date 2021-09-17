@@ -1,13 +1,25 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import bookerooHome from "../../images/BookerooHome.jpg";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import {createNewUser} from "../../actions/securityActions";
 import email from "../../images/email.png";
 import phone from "../../images/phone.png";
 import support from "../../images/support.png";
-import crumbled from "../../images/crumbled.jpg";
 import books from "../../images/books2.jpeg";
-import books3 from "../../images/books3.jpeg";
+
 class Welcome extends Component {
+
+  componentDidMount() {
+    const adminUser = {
+        username: "admin@bookeroo.com",
+        fullName: "admin",
+        password: "bookeroo",
+        confirmPassword: "bookeroo",
+        userType: "admin",
+        status: "active"
+      };
+    this.props.createNewUser(adminUser, this.props.history);
+}
   render() {
     return (
       <div className="landing mt-4">
@@ -96,5 +108,13 @@ class Welcome extends Component {
     );
   }
 }
+Welcome.propTypes = {
+  createNewUser: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired
+};
 
-export default Welcome;
+const mapStateToProps = state => ({
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { createNewUser })(Welcome);

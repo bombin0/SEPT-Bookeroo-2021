@@ -304,17 +304,26 @@ a:active {
   text-align: center;
 }
 
-.card{
+
+
+#book-shop:hover {
+  opacity: 0.5;
+  background-color: #000;
+  color: white;
+}
+
+#book-shop{
   margin-top: 1rem;
   display: flex;
  
   box-shadow: 10px 8px 16px 0 black;
 }
 
-.card:hover {
-  opacity: 0.5;
-  background-color: #000;
-  color: white;
+#listing{
+  width: 700px; 
+  height:200px; 
+  margin-top: 12px; 
+  margin-left: 70px;
+  border-color: black;
+  box-shadow: 00px 8px 16px 0 rgb(189, 184, 184);
 }
-
-

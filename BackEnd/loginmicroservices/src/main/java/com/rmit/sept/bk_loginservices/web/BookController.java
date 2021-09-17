@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
+import com.rmit.sept.bk_loginservices.services.MapValidationErrorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,9 +33,13 @@ public class BookController {
     private BookService bookService;
     @Autowired
     private BookRepository bookRepository;
+    @Autowired
+    private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("/save")
-    public ResponseEntity<Book> createNewBook(@RequestBody Book book){
+    public ResponseEntity<?> createNewBook(@RequestBody Book book, BindingResult result){
+        ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        if(errorMap != null)return errorMap;
         Book newBook = bookService.saveBook(book);
         return new ResponseEntity<Book>(newBook, HttpStatus.CREATED);
     }

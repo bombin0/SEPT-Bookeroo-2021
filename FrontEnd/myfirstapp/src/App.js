@@ -30,7 +30,7 @@ import NewListing from "./components/Books/newListing";
 const jwtToken = localStorage.jwtToken;
 
 if (jwtToken) {
-  //setJWTToken(jwtToken);
+  setJWTToken(jwtToken);
   const decoded_jwtToken = jwt_decode(jwtToken);
   store.dispatch({
     type: SET_CURRENT_USER,
@@ -49,7 +49,7 @@ class App extends Component {
 
     return (
 
-      
+
       <Provider store={store}>
         <Router>
           <div className="App">
@@ -57,13 +57,13 @@ class App extends Component {
             {
               //Public Routes
             }
-           
+
             <Route exact path="/" component={Welcome} />
             <Route exact path="/preregister" component={PreRegister} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/register2" component={Register_2} />
             <Route exact path="/login" component={Login} />
-            
+
 
             {
               //Private Routes

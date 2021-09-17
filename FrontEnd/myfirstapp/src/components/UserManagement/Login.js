@@ -17,21 +17,21 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    if (this.props.security.validToken && this.state.username!="admin") {
+    if (this.props.security.validToken && this.state.username!="admin@bookeroo.com") {
       this.props.history.push("/browse");
     }
 
-    if (this.props.security.validToken && this.state.username =="admin") {
+    if (this.props.security.validToken && this.state.username =="admin@bookeroo.com") {
       this.props.history.push("/adminManageUsers");
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.security.validToken && this.state.username!="admin@gmail.com") {
+    if (nextProps.security.validToken && this.state.username!="admin@bookeroo.com") {
       this.props.history.push("/browse");
     }
 
-    if (nextProps.security.validToken && this.state.username =="admin@gmail.com") {
+    if (nextProps.security.validToken && this.state.username =="admin@bookeroo.com") {
       this.props.history.push("/adminManageUsers");
     }
 

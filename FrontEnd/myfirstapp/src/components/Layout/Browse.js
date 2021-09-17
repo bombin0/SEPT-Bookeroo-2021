@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
 import harry from "../../images/Harry.jpg";
-import boy from "../../images/boy.jpg";
-
+import boy from "../../images/boy.jpg"; 
 
 class Browse extends Component {
 
@@ -15,8 +14,10 @@ class Browse extends Component {
             books: [],
             searchBooks: [],
             search: "",
-            bookType:"",
-            topRated: []
+            bookType:"all",
+            topRated: [],
+            token: axios.defaults.headers.common["Authorization"],
+            user: ""
         };
         this.onChange = this.onChange.bind(this);
         this.handleRadioChange = this.handleRadioChange.bind(this);
@@ -30,6 +31,8 @@ class Browse extends Component {
             .then(res => {
                 this.setState({ books: res.data });
             })
+        //const user = axios.get("http://localhost:8080/api/users/getLoggedInUser");
+        //console.log(user.data);
     }
 
     handleSearch = event => {
@@ -49,7 +52,7 @@ class Browse extends Component {
             .then(res => {
                 this.setState({ topRated: res.data });
             })
-        document.getElementsByName("bookType").disabled = true
+        
     }
 
     render() {
@@ -59,12 +62,12 @@ class Browse extends Component {
         let searching;
 
 
-        if (this.state.searchBooks.length != 0 && this.state.bookType=="") {
+        if (this.state.searchBooks.length != 0) {
             console.log(this.state.searchBooks.length)
             searching =
             <div className="card-columns ">
 
-            {searchBooks.map(books => <div class="card">
+            {searchBooks.map(books => <div class="card" id="book-shop">
                 <img className="card-img-top" src={harry} alt="Card image cap"></img>
                 <div className="card-body">
                    <p> <b>Title:</b> {books.title} <br></br>
@@ -74,14 +77,14 @@ class Browse extends Component {
             </div>)}
 
         </div>
-
+            this.state.searchBooks = [];
         }
 
-        if (this.state.searchBooks.length == 0 && this.state.bookType=="all") {
+        else if (this.state.searchBooks.length == 0 && this.state.bookType=="all") {
             console.log(this.state.searchBooks.length)
             searching =
             <div className="card-columns ">
-            {books.map(books => <div class="card">
+            {books.map(books => <div class="card" id="book-shop">
                 <img class="card-img-top" src={harry} alt="Card image cap"></img>
                 <div class="card-body">
                    <b> Title: </b> {books.title} <br></br>
@@ -92,11 +95,11 @@ class Browse extends Component {
         </div>
         }
 
-        if (this.state.bookType=="topRated"&&this.state.searchBooks.length == 0) {
+        else if (this.state.searchBooks.length == 0 && this.state.bookType=="topRated") {
             console.log(this.state.searchBooks.length)
             searching =
             <div className="card-columns ">
-            {topRated.map(books => <div class="card">
+            {topRated.map(books => <div class="card" id="book-shop">
                 <img class="card-img-top" src={harry} alt="Card image cap"></img>
                 <div class="card-body">
                    <b> Title: </b> {books.title} <br></br>
@@ -110,7 +113,6 @@ class Browse extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-sm navbar-dark bg-light mb-4">
-
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                         <span className="navbar-toggler-icon" />
                     </button>
@@ -143,7 +145,7 @@ class Browse extends Component {
                     </form>
 
                     
-                        <input className = "bookType"type="radio" id="all" name="bookType" value="all" onChange={this.handleRadioChange} />
+                        <input className = "bookType"type="radio" id="all" name="bookType" value="all" onChange={this.handleRadioChange } />
                         <label htmlFor="all">&nbsp; <b>All </b> </label> &nbsp;&nbsp;
                         <input className = "bookType" type="radio" id="topRated" name="bookType" value="topRated" onChange={this.handleRadioChange} />
                         <label htmlFor="topRated"> &nbsp; <b> Top Rated </b> </label><br></br>
