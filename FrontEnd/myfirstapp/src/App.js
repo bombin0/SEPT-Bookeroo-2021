@@ -4,7 +4,6 @@ import Dashboard from "./components/Dashboard";
 import Header from "./components/Layout/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import AddPerson from "./components/Persons/AddPerson";
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -29,7 +28,7 @@ import NewListing from "./components/Books/newListing";
 const jwtToken = localStorage.jwtToken;
 
 if (jwtToken) {
-  //setJWTToken(jwtToken);
+  setJWTToken(jwtToken);
   const decoded_jwtToken = jwt_decode(jwtToken);
   store.dispatch({
     type: SET_CURRENT_USER,
@@ -48,7 +47,7 @@ class App extends Component {
 
     return (
 
-      
+
       <Provider store={store}>
         <Router>
           <div className="App">
@@ -56,24 +55,24 @@ class App extends Component {
             {
               //Public Routes
             }
-           
+
             <Route exact path="/" component={Welcome} />
             <Route exact path="/preregister" component={PreRegister} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/register2" component={Register_2} />
             <Route exact path="/login" component={Login} />
-            
+
 
             {
               //Private Routes
             }
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/adminManageUsers" component={ManageUsers} />
-            <Route exact path="/myShop" component={NewListing} />
-            <Route exact path="/adminManageBooks" component={ManageBooks} />
-            <Route exact path="/addBook" component={AddBook} />
-            <Route exact path="/browse" component={Browse} />
-            <Route exact path="/updateBook/:id" component={updateBook} />  
+            <SecuredRoute exact path="/dashboard" component={Dashboard} />
+            <SecuredRoute exact path="/adminManageUsers" component={ManageUsers} />
+            <SecuredRoute exact path="/myShop" component={NewListing} />
+            <SecuredRoute exact path="/adminManageBooks" component={ManageBooks} />
+            <SecuredRoute exact path="/addBook" component={AddBook} />
+            <SecuredRoute exact path="/browse" component={Browse} />
+            <SecuredRoute exact path="/updateBook/:id" component={updateBook} />
           </div>
         </Router>
       </Provider>
