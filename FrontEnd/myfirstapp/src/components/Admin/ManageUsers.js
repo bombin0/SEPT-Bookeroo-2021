@@ -77,8 +77,13 @@ class ManageUsers extends Component {
     handleSearch = event => {
         event.preventDefault();
         this.props.searchUserData(this.state.search).then(res => {
-            const searchUser = res.data;
-            this.setState({ searchUser });
+            let searchuser = res.data;
+            const su = res.data;
+            this.setState({ searchUser: su,
+            editfn: searchuser.fullName,
+            editadd: searchuser.address,
+            editnumb: searchuser.phone,
+            editabn: searchuser.abn });
           })
           this.state.edit = "false";
       }
@@ -151,7 +156,7 @@ class ManageUsers extends Component {
         if (this.state.searchUser.userType == "shopOwner"){
             abnForm =
             <div className="form-group">
-            <b> ABN  (Current = {this.state.searchUser.abn})</b>
+            <b> ABN </b>
             <input
                 type="text"
                 name="editabn"
@@ -168,8 +173,8 @@ class ManageUsers extends Component {
         if (this.state.edit != "false"){
             editForm =
             <form onSubmit={this.submitEdit}>
-                <h2> Fill form to edit, if left blank the current detail will remain unchanged. </h2>
-                <b> FULL NAME (Current = {this.state.searchUser.fullName})</b>
+                <h2> Fill form to edit, if left uneditted the current detail will remain unchanged. </h2>
+                <b> FULL NAME </b>
                 <div className="form-group">
                     <input
                         type="text"
@@ -179,7 +184,7 @@ class ManageUsers extends Component {
                         onChange={this.onChange}
                     />
                 </div>
-                <b> CONTACT NUMBER (Current = {this.state.searchUser.phone}) </b>
+                <b> CONTACT NUMBER </b>
                 <div className="form-group">
                     <input
                         type="tel"
@@ -189,7 +194,7 @@ class ManageUsers extends Component {
                         onChange={this.onChange}
                     />
                 </div>
-                <b> ADDRESS (Current = {this.state.searchUser.address}) </b>
+                <b> ADDRESS  </b>
                 <div className="form-group">
                     <input
                         type="text"
