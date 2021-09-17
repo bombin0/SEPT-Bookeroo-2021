@@ -1,6 +1,7 @@
 package com.rmit.sept.bk_loginservices.model;
 
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -22,6 +23,7 @@ public class Book {
     private byte[] coverArt;
     @Lob
     private byte[] contents;
+    @Column(unique = true)
     private String ISBN;
     private String category;
 
@@ -31,6 +33,15 @@ public class Book {
     public Book(){
     }
 
+    public Book(String title, String author, String category, float price, int rating, String owner, String ISBN){
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.rating = rating;
+        this.owner = owner;
+        this.category = category;
+        this.ISBN = ISBN;
+    }
 
     public long getId() {
         return this.id;
