@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
 import harry from "../../images/Harry.jpg";
-import boy from "../../images/boy.jpg";
-
+import boy from "../../images/boy.jpg"; 
 
 class Browse extends Component {
 
@@ -16,7 +15,9 @@ class Browse extends Component {
             searchBooks: [],
             search: "",
             bookType:"",
-            topRated: []
+            topRated: [],
+            token: axios.defaults.headers.common["Authorization"],
+            user: ""
         };
         this.onChange = this.onChange.bind(this);
         this.handleRadioChange = this.handleRadioChange.bind(this);
@@ -30,6 +31,8 @@ class Browse extends Component {
             .then(res => {
                 this.setState({ books: res.data });
             })
+        //const user = axios.get("http://localhost:8080/api/users/getLoggedInUser");
+        //console.log(user.data);
     }
 
     handleSearch = event => {
@@ -110,7 +113,6 @@ class Browse extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-sm navbar-dark bg-light mb-4">
-
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                         <span className="navbar-toggler-icon" />
                     </button>
