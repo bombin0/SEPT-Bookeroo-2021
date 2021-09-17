@@ -107,4 +107,31 @@ public class BookController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
+    // update book from shop page
+    @PutMapping("/updateBookShop/{id}")
+    public ResponseEntity<Book> updateBookShop(@PathVariable Long id, @RequestBody Book bookInfo){
+        Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book does not exist with ID: " + id));
+        if (bookInfo.getAuthor() != ""){
+            book.setAuthor(bookInfo.getAuthor());
+        }
+        if (bookInfo.getTitle() != ""){
+            book.setTitle(bookInfo.getTitle());
+        }
+        if (bookInfo.getISBN() != ""){
+            book.setISBN(bookInfo.getISBN());
+        }
+        if (bookInfo.getDescription() != ""){
+            book.setDescription(bookInfo.getDescription());
+        }
+        if (bookInfo.getCategory() != ""){
+            book.setCategory(bookInfo.getCategory());
+        }
+        if (bookInfo.getPrice() != 0){
+            book.setPrice(bookInfo.getPrice());
+        }
+        
+        Book updatedBook = bookRepository.save(book);
+        return ResponseEntity.ok(updatedBook);
+    }
 }

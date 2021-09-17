@@ -4,7 +4,7 @@ import Dashboard from "./components/Dashboard";
 import Header from "./components/Layout/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import AddPerson from "./components/Persons/AddPerson";
+import myShop from "./components/Persons/myShop";
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -24,6 +24,7 @@ import { logout } from "./actions/securityActions";
 import SecuredRoute from "./securityUtils/SecureRoute";
 import AddBook from "./components/Books/AddBook";
 import updateBook from "./components/Books/updateBook";
+import updateBookShop from "./components/Books/updateBook";
 import NewListing from "./components/Books/newListing";
 
 const jwtToken = localStorage.jwtToken;
@@ -73,7 +74,9 @@ class App extends Component {
             <Route exact path="/adminManageBooks" component={ManageBooks} />
             <Route exact path="/addBook" component={AddBook} />
             <Route exact path="/browse" component={Browse} />
-            <Route exact path="/updateBook/:id" component={updateBook} />  
+            <Route exact path="/updateBook/:id" component={updateBook} />
+            <Route exact path="/Shop" component={myShop} />
+            <Route exact path="/updateBookShop/:id" component={updateBookShop} />
           </div>
         </Router>
       </Provider>

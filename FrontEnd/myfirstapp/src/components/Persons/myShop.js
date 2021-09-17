@@ -24,6 +24,8 @@ class AddPerson extends Component {
         price: "",
         coverArt: null,
         contents: null,
+        //owner: this.props.match.params.username,
+        //username: this.props.match.params.username,
         search: "",
         searchBooks: [],
         books:[],
@@ -39,23 +41,18 @@ class AddPerson extends Component {
     
     onSubmit(e){
         e.preventDefault();
+        
         const newListing = {
             title: this.state.title,
             author: this.state.author,
             category: this.state.category,
             description: this.state.description,
+            owner: this.state.owner,
             price:this.state.price,  
         }
         axios.post("http://localhost:8080/api/books/save", newListing);
         window.location.reload();
 
-    }
-
-    componentDidMount() {
-        axios.get("http://localhost:8080/api/books/allBooks")
-            .then(res => {
-                this.setState({ books: res.data });
-            })
     }
 
     onFileUpload(e){
@@ -73,7 +70,7 @@ class AddPerson extends Component {
     }
 
     editBook(id){
-        this.props.history.push(`/updateBook/${id}`)
+        this.props.history.push(`/updateBookShop/${id}`)
     }   
 
     removeBook(id){
@@ -81,6 +78,7 @@ class AddPerson extends Component {
             this.setState({searchBooks: this.state.searchBooks.filter(book => book.id !== id)});
         });
     }
+
 
     render() {
         const { books } = this.state
@@ -299,4 +297,3 @@ AddPerson.propTypes = {
     null,
     { createPerson }
   )(AddPerson);
-

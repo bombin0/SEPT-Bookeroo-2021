@@ -17,6 +17,7 @@ class ManageBooks extends Component {
             price: "",
             rating: 0,
             isbn: "",
+            owner: "",
             category: "",
             coverArt: null,
             contents: null,
@@ -49,6 +50,7 @@ class ManageBooks extends Component {
             description: this.state.description,
             price: parseInt(this.state.price),
             isbn: this.state.isbn,
+            owner: this.state.owner,
             rating: this.state.rating,
             category: this.state.category,
             //contents: bookcontent,
@@ -150,6 +152,16 @@ class ManageBooks extends Component {
                                     placeholder="PRICE"
                                     name="price"
                                     value={this.state.price}
+                                    style={{ width: "60%" }}
+                                    onChange={this.onChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input type="text" className="form-control form-control-lg"
+                                    placeholder="Owner"
+                                    name="owner"
+                                    value={this.state.owner}
                                     style={{ width: "60%" }}
                                     onChange={this.onChange}
                                     required

@@ -19,6 +19,7 @@ public class BookService {
         newBook.setContents(newBook.getContents());
         newBook.setDescription(newBook.getDescription());
         newBook.setPrice(newBook.getPrice());
+        newBook.setOwner(newBook.getOwner());
         newBook.setRating(newBook.getRating());
         newBook.setCoverArt(newBook.getCoverArt());
 
