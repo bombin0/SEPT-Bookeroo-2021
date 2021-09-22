@@ -25,7 +25,6 @@ import SecuredRoute from "./securityUtils/SecureRoute";
 import AddBook from "./components/Books/AddBook";
 import updateBook from "./components/Books/updateBook";
 import updateBookShop from "./components/Books/updateBook";
-import NewListing from "./components/Books/newListing";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -70,7 +69,7 @@ class App extends Component {
             }
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/adminManageUsers" component={ManageUsers} />
-            <Route exact path="/myShop" component={NewListing} />
+            
             <Route exact path="/adminManageBooks" component={ManageBooks} />
             <Route exact path="/addBook" component={AddBook} />
             <Route exact path="/browse" component={Browse} />
